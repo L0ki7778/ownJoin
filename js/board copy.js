@@ -1,8 +1,8 @@
- function init(){
-    getUser(sessionKey)
-    renderComponents(activeUser);
-    updateHTML()
-}
+//  function init(){
+//     getUser(sessionKey)
+//     renderComponents(activeUser);
+//     updateHTML()
+// }
 
 function renderComponents(activeUser){
     let body = document.querySelector('body')

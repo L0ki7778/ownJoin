@@ -110,5 +110,5 @@ function renderLogin() {
         `;
     setEventListener();
     addLogInHandler();
-    getItem(key)
+    getUserList(userKey);
 }

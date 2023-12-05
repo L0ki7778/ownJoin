@@ -81,7 +81,7 @@ function renderContacts(letter) {
       contacts[i].firstName.slice(0, 1) + contacts[i].name.slice(0, 1);
     let initial = contacts[i].firstName.slice(0, 1);
 
-    if (letter === initial) {
+    if (letter === initial.toUpperCase()) {
       container.innerHTML += `
         <div id="${fullName}" onclick="openProfile('${fullName}', '${contact["email"]}', '${contact["phoneNumber"]}')" class="contact">
         

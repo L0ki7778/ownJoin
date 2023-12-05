@@ -16,6 +16,7 @@ async function categoryFilter() {
   clearSubArrays(toDo, done, inProgress, awaitFeedback, urgent);
   hasContent(toDo, "category", "To Do")
   hasContent(done, "category", "Done")
+  hasContent(done, "category", "done")
   hasContent(inProgress, "category", "In Progress")
   hasContent(awaitFeedback, "category", "Await Feedback")
   hasContent(urgent, "prio", "urgent")

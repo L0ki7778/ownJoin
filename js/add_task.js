@@ -63,7 +63,6 @@ function setupInputListeners() {
     const input = document.getElementById(id);
 
     if (input) {
-      console.log(`Element with ID ${id}:`, input);
       input.addEventListener("input", checkInputs);
     } else {
       console.error(`Element with ID ${id} not found.`);
