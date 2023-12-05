@@ -1,0 +1,12 @@
+#-Comment Funktion. die Raute wird von suchmachinen nicht gelesen
+
+User-agent: *
+
+Disallow: /add_task.html
+Disallow: /board.html
+Disallow: /contacts.html
+Disallow: /help.html
+Disallow: /legal_notice.html
+Disallow: /pop_add_Contact.html
+Disallow: /pop_add_task.html
+Disallow: /privacy-policy.html

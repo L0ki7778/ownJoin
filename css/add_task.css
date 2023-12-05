@@ -1,0 +1,201 @@
+main{
+    position: relative;
+    left: 14%;
+    width: 76%;
+    height: 92vh;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+input {
+    font-family: 'Inter', sans-serif;
+    max-width: 440px;
+    height: 48px;
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid #DEDFDF;
+    font-size: 20px;
+    padding-left: 16px;
+}
+textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    border: 1px solid #DEDFDF;
+    border-radius: 10px;
+    min-width: 440px;
+    max-width: 440px;
+    padding-left: 16px;
+    padding-top: 12px;
+}
+select {
+    min-width: 440px;
+    max-width: 440px;
+    height: 48px;
+    border: 1px solid #DEDFDF;
+    border-radius: 10px;
+    font-size: 20px;
+    padding-left: 16px;
+}
+p {
+    margin-bottom: 8px;
+}
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+
+section {
+    position: absolute;
+    top: 0;
+    left: 232px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+#task-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.sections {
+    display: flex;
+    justify-content: center;
+}
+.title {
+    margin-left: 84px;
+    margin-bottom: 32px;
+    margin-top: 84px;
+    font-size: 61px;
+    font-weight: 700;
+}
+.leftSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 440px;
+}
+.border {
+    width: 1px;
+    background-color: #DEDFDF;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+.rightSection {
+    width: 440px;
+}
+#prio {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+.prioImgs {
+    margin-left: 4px;
+}
+.prio {
+    border: 1px solid #DEDFDF;
+    border-radius: 10px;
+    width: 136px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+}
+.prio span:hover {
+    cursor: pointer;
+    box-shadow: 0px 8px 4px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+.prio label span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 136px;
+    height: 56px;
+}
+.prio label input {
+    display: none;
+}
+.prio input:checked + span {
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 8px 4px 0px rgba(0, 0, 0, 0.2);
+}
+.bottomSection {
+    margin-top: 160px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 84px;
+    margin-right: 84px;
+}
+
+.createTaskButton {
+    border: unset;
+    border-radius: 10px;
+    padding: 16px;
+    color: white;
+    background-color: #2A3647;
+    gap: 4px;
+    font-size: 21px;
+}
+.createTaskButton:hover {
+    cursor: pointer;
+    background-color: #29ABE2;
+}
+.createTaskButton:disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+}
+.clearButton {
+    background-color: #F6F7F8;
+    color: #091931;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    padding: 16px;
+    gap: 4px;
+    font-size: 20px;
+    margin-right: 16px;
+}
+.clearButton:hover {
+    cursor: pointer;
+    border: 1px solid #29ABE2;
+    color: #29ABE2;
+}
+.span {
+    color: #FF8190;
+}
+.selectContainer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    min-width: 250px;
+    height: 50px;
+}
+.select-box {
+    appearance: none;
+    padding:  0 30px 0 15px;
+    width: 100%;
+    color: black;
+    font-size: 20px;
+}
+.divIcon {
+    width: 50px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+.divIcon i {
+    font-size: 20px;
+}
+

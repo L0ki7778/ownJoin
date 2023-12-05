@@ -1,0 +1,54 @@
+:root{
+    --blue: #29ABE2;
+    --dark: #2A3647;
+    --outline-active: #74C5E8;
+    --outline-error:#FF6073;
+    font-family: 'Inter', sans-serif;
+}
+
+body{
+    margin:0
+}
+
+main{
+    position: relative;
+    left: 14%;
+    width: 86%;
+    max-width: 1240px;
+    height: 92vh;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.colorJoin {
+    color: #29ABE2;
+}
+.scrollHelp {
+    margin-left: 84px;
+    margin-right: 84px;
+    overflow: auto;
+}
+.scrollHelp::-webkit-scrollbar {
+    display: none;
+  }
+.scrollHelp img {
+    position: relative;
+    top: -56px;
+    left: 1002px;
+}
+.scrollHelp img:hover {
+    cursor: pointer;
+}
+
+.titleH1 {
+    font-size: 61px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+h2 {
+    margin-bottom: 0;
+}
+.scrollHelp p {
+    margin-top: 0;
+}

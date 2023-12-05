@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/start_screen.css">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <script src="/js/login.js"></script>
+    <script src="js/signUp.js"></script>
+    <script src="/render/renderSignup.js"></script>
+    <script src="script.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/join-logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Join</title>
+</head>
+
+<body onload="init()">
+    <div id="logo" class="logo-container"></div>
+    <div id="info" class = "btn btn-danger"><img src="assets/img/error.png" id="error" alt=""><div id="info-text">test</div></div>
+    <header>
+        <div id="header-container" class="d-flex justify-content-end">
+            <div id="sign-up">
+                <span id="sign-up-text">Not a Join user?</span>
+                <button id="sign-up-btn" class="btn" onclick="renderSignup()">Sign up</button>
+            </div>
+        </div>
+    </header>
+    <main id="login-main">
+        <div id="login-container">
+            <div id="login-title-container">
+                <div id="login-title">Log in</div>
+                <div id="login-underline"></div>
+            </div>
+            <form onsubmit="logIn();return false">
+                <div id="login-input-container">
+                    <div class="login-input-fields">
+                        <input class="login-input" id="login-mail" type="email" required placeholder="Email">
+                        <img class="input-img" src="assets/img/mail.png" alt="mail">
+                    </div>
+                    <div id="password-container" class="login-input-fields">
+                        <input class="login-input password" id="login-password" type="password" min="8" required
+                            placeholder="Password"
+                            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\-]).{8,}$"
+                            title="Bitter verwende mindestens eine Zahl und ein Sonderzeichen.">
+                        <div class="eye-container"><img  class="lock input-img" src="assets/img/lock.png" alt="lock"></div>
+                    </div>
+                    <div id="log-in-check" class="d-flex">
+                        <input type="checkbox" id="check">
+                        <img id="checkbox" src="assets/img/checkbox.png" onclick="checkboxClick()" alt="checkbox">
+                        <label class="label" for="check">Remember me</label>
+                    </div>
+                </div>
+                <div id="login-btn-container">
+                    <button id="login-btn" class="btn" disabled="true" type="submit">
+                        Log in
+                    </button>
+                    <button id="guest-login-btn" class="btn" onclick="guestLogIn()">
+                        Guest Log in
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer class="row">
+            <div class="col-3"></div>
+            <a class="col-3" href="/assets/templates/privacy_policy_signUP.html" target="_blank">Privacy Police</a>
+            <a class="col-3" href="/assets/templates/legal_notice_signUp.html" target="_blank">Legal Notice</a>
+            <div class="col-3"></div>            
+    </footer>
+</body>
+
+</html>
