@@ -2,11 +2,10 @@
 
 User-agent: *
 
-Disallow: /add_task.html
-Disallow: /board.html
-Disallow: /contacts.html
-Disallow: /help.html
-Disallow: /legal_notice.html
-Disallow: /pop_add_Contact.html
-Disallow: /pop_add_task.html
-Disallow: /privacy-policy.html
+Disallow: /assets/
+Disallow: /css/
+Disallow: /js/
+Disallow: /render/
+Disallow: /fonts/
+Disallow: /script.js
+Disallow: /style.css

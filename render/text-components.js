@@ -1,7 +1,11 @@
+//just endless html regarding privacy policy and legal 
+// notice in german(just in case) as well as english
+// 
+// gets rendered in when clicking on either privacy policy or legal notice
 function renderPrivacyPolicy() {
   return /*html*/ `
    <div id="german" class="d-none">
-       <div class=arrow><h1>Datenschutzerklärung</h1><a href="/assests/templates/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
+       <div class=arrow><h1 class="titleH1">Datenschutzerklärung</h1><a id="help-arrow" href="/assets/templates/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
 
        <p>Verantwortlicher im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO),
             ist:
@@ -245,7 +249,7 @@ function renderPrivacyPolicy() {
     </div>
 
     <div id="english" >
-        <div class=arrow><h1>Privacy Policy</h1><a href="/assests/templates/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
+        <div class=arrow><h1 class="titleH1">Privacy Policy</h1><a id="help-arrow" href="/assets/templates/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
         <p>Controller for the purposes of data protection laws, in particular the EU General Data Protection Regulation
             (GDPR),
             is:
@@ -492,7 +496,7 @@ function renderPrivacyPolicy() {
 function renderLegalNotice() {
   return /*html*/ `
     <div class="scroll-help">
-    <div class="arrow"><h1 class="titleH1">Legal Notice</h1> <a href="/assets/templates/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
+    <div class="arrow"><h1 class="titleH1">Legal Notice</h1> <a id="help-arrow" href="/assets/templates/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
     <h2>Imprint</h2>
     <ul>
         <li>Simon Golenia</li>
@@ -528,7 +532,7 @@ function renderLegalNotice() {
 function renderHelp() {
   return /*html*/ `
     <div class="scroll-help">
-    <div class="arrow"><h1 class="titleH1">Help</h1> <a href="/assets/templates/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
+    <div class="arrow"><h1 class="titleH1">Help</h1> <a id="help-arrow" href="/assets/templates/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
 
     <p>Welcome to the help page for <span class="colorJoin">Join</span>, your guide to using our kanban project management tool. Here, we'll provide an overview of what <span class="colorJoin">Join</span> is, how it can benefit you, and how to use it.</p>
     

@@ -1,3 +1,5 @@
+//renders the signup component on the page. Function gets
+//executed when the signup button on the start page is clicked.
 function renderSignup() {
     let main = document.getElementById('login-main');
     let header = document.getElementById('sign-up');
@@ -32,6 +34,7 @@ function renderSignup() {
                 <input class="login-input password" id="confirm_password" type="password" placeholder="Password Conformation">
                 <div class="eye-container"><img class="input-img lock" src="assets/img/lock.png" alt="lock"></div>
             </div>
+            <div class="reminder d-none" id="pw-check-reminder">Ups?! Your passwords don't match or dont meet the requirements.</div>
         </div>
         <div>
             <div id="policy-check" class="d-flex">
@@ -60,17 +63,17 @@ function renderSignup() {
         </div>     
     </div>
         `;
-    setEventListener();
-    addSignUpHandler()
+    setEventListener();// responsible for changeing the input-icons for password-inputs as well as the "show-passwort"-functionality
+    addSignUpHandler()//listener for couloring the input fields in case of missmatch or not fullfilled requirements
 };
 
 
+// Renders the login component on the page and gets executed when the 
+// arrow-button (#back_arrow) within the signup-screen  is clicked.
 function renderLogin() {
-
     let main = document.getElementById('login-main');
     let header = document.getElementById('sign-up');
     header.classList.remove('d-none')
-
     main.innerHTML = '';
     main.innerHTML +=/*html*/`
         <div id="login-container">
@@ -110,5 +113,5 @@ function renderLogin() {
         `;
     setEventListener();
     addLogInHandler();
-    getUserList(userKey);
+    getUserList(userKey)
 }

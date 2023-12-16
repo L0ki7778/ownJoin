@@ -3,15 +3,14 @@
     --outline-active: #74C5E8;
     --outline-error:#FF6073;
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
     scroll-behavior: smooth;
 }
 
 body {
-    margin: 0 auto;
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    background-color: #F6F7F8;
+    margin: 0 auto!important;
+    font-family: 'Inter', sans-serif!important;
+    font-size: 16px;
+    background-color: #F6F7F8!important;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -89,3 +88,4 @@ body {
     width: 76%;
     max-width: 1240px;
 }
+

@@ -1,8 +1,12 @@
+:root{
+    --height:calc(100vh-6rem);
+}
+
 main{
     position: relative;
-    left: 14%;
     width: 86%;
-    height: 92vh;
+    left:0;
+    height: var(--height);
     display: flex;
     justify-content: center;
     align-items: baseline;
@@ -11,12 +15,13 @@ main{
 section{
     position: absolute;
     top: 0;
-    left: 0;
+    left: 14rem;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
+    width: calc(100% - 14rem);
+
 }
 
 .contactSection {
@@ -24,12 +29,9 @@ section{
     height: 100%;
 }
 .contactsDiv {
-    width: 456px;
-    /* min-height: 800px; */
+    width: 25rem;
     background-color: white;
     padding: 0px 24px 0px 24px;
-    /* border-radius: 10px; */
-    /* margin-left: 20px; */
     height: 100%;
     z-index: 2;
     box-shadow: 2px 7px 16px 1px rgba(0,0,0,0.2);
@@ -62,7 +64,7 @@ section{
     width: 100%;
     height: 760px;
     overflow: auto;
-    padding: 32px 0px 32px 0px;
+    padding: 0px 0px 64px 0px;
 }
 ::-webkit-scrollbar {
     width: 6px;
@@ -92,35 +94,42 @@ section{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 352px;
+    width: 21rem;
     height: 58px;
     padding: 0px 36px 0px 36px;
     font-size: 20px;
 }
 .register span {
-    padding-left: 54px;
+    padding-left: 0.2rem;
 }
 .registerLine {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 352;
+    width: 20rem;
     border: 1px solid #D1D1D1;
 }
 .contact {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 352px;
+    width: 21.5rem;
     height: 78px;
-    padding: 15px 24px 15px 74px;
+    padding: 0rem 1.5rem 0rem 1.5rem;
     gap: 12px;
 }
+
+.nameLinkDiv>a{
+    text-decoration: none;
+}
+
+
 .contact:hover {
     cursor: pointer;
     background-color: lightgray;
     border-radius: 10px;
 }
+
 .initials {
     display: flex;
     justify-content: center;
@@ -130,28 +139,45 @@ section{
     font-size: 12px;
     border-radius: 45px;
     color: white;
+    background-color: blue;
+    border: 2px solid white;
 }
 .fullName {
-    font-size: 20px;
+    font-size: 1.2rem;
 }
 .nameLinkDiv {
     display: flex;
     flex-direction: column;
+    margin-left: 1rem;
 }
 .emailLinks {
     color: #007CEE;
+    word-break: break-all;
 }
 .headlineDiv {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: start;
-    margin-bottom: 32px;
-    margin-top: 84px;
-    margin-left: 60px;
+    padding-bottom: 2rem;
+    padding-top: 5rem;
+    padding-left: 4rem;
+    width: 40rem;
 }
 .h1 {
-   font-size: 61px;
-    font-weight: 700; 
+   font-size: 4rem !important;
+    font-weight: 700 !important; 
+}
+.h2 {
+    font-size: 3rem !important;
+    font-weight: 500 !important; 
+}
+.pProfile {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.pMail{
+    margin-top: 1rem;
 }
 .blueLine {
     border: 3px solid #29ABE2;
@@ -165,21 +191,21 @@ section{
     gap: 30px;
 }
 .spanContact {
-    font-size: 27px;
+    font-size: 1.5rem;
 }
 .userProfile {
     display: flex;
-    width: 461px;
-    height: 364px;
-    gap: 21px;
-    margin-left: 60px;
+    width: 29rem;
+    height: 23rem;
+    gap: 1.5rem;
+    padding-left: 3.5rem;
 }
 
 .topProfile {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 51px;
+    gap: 3rem;
     padding-top: 12px;
     padding-bottom: 12px;
 }
@@ -204,42 +230,75 @@ h2 {
 .addContactPopUp {
     position: absolute;
     display: flex;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.2);
-    width: 1440px;
-    height: 1152px;
-    z-index: 9999;
+    z-index: 100;
 }
 .addContact {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1212px;
-    height: 592px;
+    width: 76rem;
+    height: 37rem;
     border-radius: 30px;
+    transform: translateX(110rem);
+    animation: slide-contact-in 0.15s linear forwards;
 }
+
+
+@keyframes slide-contact-in {
+    0% {
+        transform: translateX(110rem);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+    
+}
+
+@keyframes slide-contact-out {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(110rem);
+    }
+    
+}
+
 .logoContact {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 467px;
+    width: 40%;
     height: 100%;
     color: white;
     background-color: #2A3647;
     border-radius: 30px 0 0 30px;
-    font-size: 27px;
+    font-size: 1.8rem;
 }
 .contactFormular {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 745px;
-    height: 592px;
+    width: 60%;
+    height: 100%;
     background-color: white;
     border-radius: 0 30px 30px 0;
-    gap: 50px;
+    gap: 4rem;
 }
+
+.contactFormular>img{
+    margin-bottom: 2rem;
+}
+
 .inputsContact {
     width: 422px;
     height: 215px;
@@ -252,25 +311,25 @@ h2 {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 20px;
-    gap: 4px;
+    margin-top: 3rem;
+    gap: 1.2rem;
 }
 .closePopUp {
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: -105px;
-    left: 441px;
-    background-color: white;
-    border: unset;
-    width: 24px;
-    height: 24px;
+    top: 3rem;
+    background-color: transparent;
+    right: 4rem;
+    border: none;
+    border-radius: 50%;
+    width: 1.8rem;
+    height: 1.8rem;
 }
 .closePopUp:hover {
     cursor: pointer;
-    background-color: #D1D1D1;
-    border-radius: 12px;
+    background-color: rgba(0,0,0,0.05);
 }
 .d-none {
     display: none;
@@ -316,4 +375,85 @@ h2 {
     cursor: pointer;
     color: #29ABE2;
     font-weight: bold;
+}
+
+#clearButton {
+    background-color: white!important;
+}
+
+#input-container{
+    margin-top: 3rem;
+}
+
+form{
+    margin-block-end: 0;
+}
+
+
+.row{
+    padding: 2px!important;
+}
+.row>img{
+    padding-right: 0!important;
+    padding-left: 0!important;
+}
+
+input+img{
+    height: 1.5rem!important;
+    width: 1.5rem!important;
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    bottom: 0;
+    margin: auto!important;
+    z-index: 7;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox
+input[type=number] {
+  -moz-appearance: textfield;
+} */
+
+.profile-initials-pseudo-img{
+    height: 7.5rem;
+    width: 7.5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: 400;
+    color: white;
+    border:2px solid white;
+    box-shadow: 0px 0px 2px 3px rgba(0, 0, 0, 0.05);
+}
+
+#profile-img-div{
+    height: 8rem;
+    width:8rem;
+}
+.activeContact {
+    background-color: #2A3647;
+    color: white;
+    border-radius: 10px;
+    &:hover{
+        background-color: #2A3647;
+    }
+}
+
+.contact:target{
+    background-color: #2A3647;
+    color:white
+}
+.arrowContact {
+    display: none;
 }

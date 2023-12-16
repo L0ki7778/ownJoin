@@ -1,27 +1,31 @@
 :root {
     --blue: #29ABE2;
     --outline-active: #74C5E8;
-    --outline-error:#FF6073;
+    --outline-error: #FF6073;
     font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
 }
 
 .navBar {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    width: 14%;
+    width: 14rem;
     height: 100%;
     background-color: #2A3647;
     font-size: 16px;
+    padding-top: 0!important;
+    padding-bottom: 0!important;
 }
+
 
 .navLogo {
     margin-top: 50px;
-    width: 100px;
 }
 
 .navLinks {
@@ -34,30 +38,37 @@
 }
 
 .navLinkImg {
-    width: 232px;
-    height: 46px;
     display: flex;
-    justify-content: center;
+    width: auto;
+    width: 14rem;
+    height: 3rem;
+    text-align: start;
     align-items: center;
-    gap: 15px;
-    color: white;
+    color:white;
+    text-decoration: none;
+    &:hover{
+        background-color: #2A3D59;
+        color:white
+    }
+
+    &:active{
+        background-color: #091931;
+        color:white
+    }
 }
 
-.navLinkImg a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
+.active{
+    background-color: #091931;
+    color:white
 }
+
+.navLinkImg>span{
+    margin-left:1rem
+}
+
 
 .linkImg {
-    width: 30px;
-    height: 30px;
-}
-
-.navLinkImg:hover {
-    cursor: pointer;
-    background-color: #091931;
+   margin:0 1rem 0 3rem
 }
 
 .navBottom {
@@ -82,20 +93,21 @@ header {
     position: sticky;
     top: 0;
     z-index: 1;
-    left: 14%;
+    left: 14rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 86%;
+    width: calc(100% - 14rem);
     height: 96px;
     background-color: white;
     box-shadow: -2px 0 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .pHeader {
-    font-size: 20px;
-    margin-left: 100px;
-    margin-bottom: 16px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    margin: auto 0 auto 8rem;
 }
 
 .imgsHeader {
@@ -117,10 +129,10 @@ header {
 #profile-icon {
     width: 56px;
     height: 56px;
-    color:var(--blue);
+    color: var(--blue);
     font-size: 1.5rem;
     font-weight: 600;
-    border:3px solid black;
+    border: 3px solid black;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -132,13 +144,13 @@ header {
     background-color: rgba(0, 0, 0, 0.05)
 }
 
-#icon-menu{
+#header-icon-menu {
     position: absolute;
-    right: 16px;
-    top: 96px;
+    right: 1rem;
+    top: 6rem;
     color: #CDCDCD;
     border: 1px solid black;
-    width: 110px;
+    width: 9rem;
     border-radius: 15px 0 15px 15px;
     display: flex;
     flex-direction: column;
@@ -148,17 +160,21 @@ header {
     background-color: #2A3647;
 }
 
-.menu-option{
+.menu-option {
     display: flex;
     align-items: center;
-    color:#CDCDCD;
+    color: #CDCDCD;
     text-decoration: none;
     font-weight: 400;
     font-size: 1rem;
     height: 50px;
     width: 100%;
 
-    &:hover{
+    &:hover {
         background-color: #2A3D59;
     }
+}
+
+.mobileImgHeader {
+    display: none;
 }

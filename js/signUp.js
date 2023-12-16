@@ -11,26 +11,46 @@ const existingMail = "Your email is already in use";
 function addSignUpHandler() {
   let password = document.getElementById("create_password");
   let confirm_password = document.getElementById("confirm_password");
-  function validatePassword() {
-    let div = document.getElementsByClassName("login-input-fields");
-    for (let i = 2; i < div.length; i++) {
-      if (password.value != confirm_password.value) {
-        confirm_password.setCustomValidity("Passwords Don't Match"),
-          div[i].style.border = "3px solid red";
-        disableSignUp(); return false
-      } else if (confirm_password.value.length > 0) {
-        div[i].style.border = "3px solid green"
-        confirm_password.setCustomValidity('');
-        enableSignUp(); return true
-      }
-    }
-  }
-  password.oninput = validatePassword;
-  confirm_password.oninput = validatePassword;
+  password.addEventListener('input', validatePassword);
+  confirm_password.addEventListener('input', validatePassword);
 }
 
+function validatePassword() {
+  let password = document.getElementById("create_password");
+  let confirm_password = document.getElementById("confirm_password");
+  let div = document.getElementsByClassName("login-input-fields");
+
+  if (password.value !== confirm_password.value) {
+    noMatch(div[2], div[3], confirm_password)
+  } else if (password.value === confirm_password.value && confirm_password.value.length >= 8) {
+    console.log("match")
+    match(div[2], div[3], confirm_password)
+  }
+}
+
+function noMatch(pawsswordDiv, confirmationDiv, confirm_password) {
+  document.getElementById('pw-check-reminder').classList.remove('d-none')
+  confirm_password.setCustomValidity("Passwords Don't Match"),
+  pawsswordDiv.style = "border: 3px solid red!important";
+  confirmationDiv.style = "border: 3px solid red!important";
+  disableSignUp(); 
+  return false
+}
+
+function match(pawsswordDiv, confirmationDiv, confirm_password) {
+  document.getElementById('pw-check-reminder').classList.add('d-none')
+  pawsswordDiv.style = "border: 3px solid green!important";
+  confirmationDiv.style = "border: 3px solid green!important";
+  confirm_password.setCustomValidity('');
+  enableSignUp(); 
+  return true
+}
+
+
+
+
 function formValidation() {
-  if (addSignUpHandler) {
+  if (validatePassword) {
     enableSignUp()
   } else {
     disableSignUp()
@@ -141,6 +161,7 @@ function popUpSignUp(text) {
   overlay.classList.remove('d-none')
 }
 
+
 function popUp(text, width) {
   let popUp = document.getElementById('info-text');
   let container = document.getElementById('info');
@@ -153,20 +174,6 @@ function popUp(text, width) {
 }
 
 
-/**
- * Generates the initials from a given name.
- *
- * @param {string} name - The name to generate the initials from.
- * @return {string} The initials generated from the name.
- */
-function createInitials(name) {
-  let item = differMultipleNames(name)
-  if (item.firstName) {
-    return initials = item.firstName.slice(0, 1) + item.lastName.slice(0, 1);
-  } else {
-    return initials = item.slice(0, 1)
-  }
-}
 
 /**
  * Generates a random color from a predefined list of colors.
@@ -179,23 +186,4 @@ function randomColor() {
     "#FFA35E", "#FC71FF", "#FFC701", "#0038FF", "#C3FF2B", "#FFE62B", "#FF4646", "#FFBB2B"];
   let randomIndex = Math.floor(Math.random() * colors.length);
   return colors[randomIndex];
-}
-
-
-
-/**
- * Splits a name string into first name and last name.
- *
- * @param {string} name - The name string to be split.
- * @return {object} - An object containing the first name and last name.
- */
-function differMultipleNames(name) {
-  let nameArr = name.split(' ');
-  if (nameArr.length == 2) {
-    name = {
-      firstName: nameArr[0],
-      lastName: nameArr[1]
-    }
-  };
-  return name
 }

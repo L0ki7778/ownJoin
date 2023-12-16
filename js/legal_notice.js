@@ -1,10 +1,11 @@
 function init() {
     getUser(sessionKey);
-    let body = document.querySelector('body');
-    body.innerHTML = renderNavBar();
-    body.innerHTML += renderHeader(activeUser);
+    let header = document.querySelector('header');
+    let nav = document.querySelector('nav');
     let main = document.querySelector('main');
-    main.innerHTML = renderLegalNotice();
+    nav.innerHTML += renderNavBar();
+    header.innerHTML += renderHeader(activeUser);
+    main.innerHTML += renderLegalNotice();
 }
 
 

@@ -1,0 +1,21 @@
+.sectionsEdit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#prioEdit {
+    display: flex;
+    gap: 1rem;
+}
+
+
+
+
+
+.edit-task-bottom-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
