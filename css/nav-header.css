@@ -150,7 +150,7 @@ header {
     top: 6rem;
     color: #CDCDCD;
     border: 1px solid black;
-    width: 9rem;
+    width: fit-content;
     border-radius: 15px 0 15px 15px;
     display: flex;
     flex-direction: column;
@@ -178,3 +178,4 @@ header {
 .mobileImgHeader {
     display: none;
 }
+

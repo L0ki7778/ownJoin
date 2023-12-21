@@ -96,7 +96,7 @@ main{
     color: white;
 }
 
-#To-do:hover>img {
+#To-Do:hover>img {
     content:url('/assets/img/pen-frame-white.png');
 }
 
@@ -202,6 +202,3 @@ a>span{
 .d-flex>h1{
     width: 19rem;
 }
-
-
-

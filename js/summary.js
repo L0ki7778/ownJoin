@@ -81,6 +81,6 @@ function clearSubArrays(...array) {
  * @param {string} pageUrl - The URL of the board.html template.
  */
 function openBoard() {
-  let pageUrl = '/assets/templates/board.html';
+  let pageUrl = '/html/board.html';
   window.open(pageUrl, '_self');
 }

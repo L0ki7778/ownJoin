@@ -17,16 +17,16 @@ function renderAddTaskSections() {
         <div id="description-requirement" class="d-none">Please provide a description</div>
         <h6>Assigned to</h6>
         <div class="relative">
-            <div id="assign-select" class="input-group sub-container ">
+            <div id="assign-select" class="input-group sub-container">
                 <input class="form-control subtask-input contact-assign-select select"
                     onclick="openList('assign-select','assign','assign-ul','assign-icon')"
                     placeholder="Select contacts to assign" id="assign">
-                <button id="assign-icon" class="divIcon"
+                <button id="assign-btn" class="divIcon"
                     onclick="openList('assign-select','assign','assign-ul','assign-icon')"><img
-                        src="/assets/img/arrow_drop_down.png" alt=""></button>
+                    id="assign-icon" src="/assets/img/arrow_drop_down.png" alt=""></button>
             </div>
             <div id="assign-ul" class="ul-parent d-none">
-                <ul id=assign-list class="drop-down-select-container ">
+                <ul id=assign-list class="drop-down-select-container" onclick="event.stopPropagation()">
                     <li class=add-task-contact>
                         <div class="profile">
                             <div class="icon">*Bild*</div>
@@ -52,6 +52,7 @@ function renderAddTaskSections() {
                     type="text" 
                     placeholder="tt/mm/yyyy"
                     onfocus="(this.type='date')" 
+                    min="${getMinDate()}"
                     required />
         </div>
         <div id="date-requirement" class="d-none">Please set the actual or a furture date.</div>
@@ -71,7 +72,8 @@ function renderAddTaskSections() {
                     <input id="medium" 
                         type="checkbox" 
                         value="Medium" 
-                        onclick="checkBoxClicked('medium')">
+                        onclick="checkBoxClicked('medium')"
+                        checked>
                     <span class="priority-span" id="medium-span">Medium <img class="prioImgs" id="medium-img"src="/assets/img/medium-priority.png" alt=""></span>
                 </label>
             </div>
@@ -95,23 +97,21 @@ function renderAddTaskSections() {
                     onclick="openList('category-select','category','category-ul','category-icon')" 
                     readonly 
                     required>
-                <button id="category-icon" class="divIcon"
+                <button id="category-btn" class="divIcon"
                     onclick="openList('category-select','category','category-ul','category-icon')"><img
-                        src="/assets/img/arrow_drop_down.png" alt=""></button>
+                    id="category-icon" src="/assets/img/arrow_drop_down.png" alt=""></button>
             </div>
             <div id="category-ul" class="ul-parent d-none">
-                <ul class="drop-down-select-container">
-                    <li class=add-task-contact>
+                <ul id="focus-category" class="drop-down-select-container">
+                    <li class=add-task-contact onclick="setValue('Technical Task');closeList('category-select','category','category-ul','category-icon');checkAllInputs()">
                         <div class="profile">
-                            <div class="name"
-                                onclick="setValue('Technical Task');closeList('category-select','category','category-ul','category-icon');checkAllInputs()">
+                            <div class="name">
                                 Technical Task</div>
                         </div>
                     </li>
-                    <li class=add-task-contact>
+                    <li class=add-task-contact onclick="setValue('User Story');closeList('category-select','category','category-ul','category-icon');checkAllInputs()">
                         <div class="profile">
-                            <div class="name"
-                                onclick="setValue('User Story');closeList('category-select','category','category-ul','category-icon');checkAllInputs()">
+                            <div class="name">
                                 User Story</div>
                         </div>
                     </li>
@@ -168,11 +168,11 @@ function renderSubTasksList() {
     let list = document.getElementById('task-list');
     list.innerHTML = '';
     subTasks.forEach((e) => {
-        list.innerHTML += `<li>${e}</li>`
+        list.innerHTML += `<div class="subTaskListFlex"><li class="single-subtask" onclick="editListItem(${subTasks.indexOf(e)})" id="${subTasks.indexOf(e)}">${e}</li><img class="deleteSubtaskImg" onclick="deleteSubtask('${subTasks.indexOf(e)}')" src="/assets/img/delete.png" alt=""></div>`
     })
     if (finishedSubTasks.length > 0) {
         finishedSubTasks.forEach((e) => {
-            list.innerHTML += `<li>${e}</li>`
+            list.innerHTML += `<div class="subTaskListFlex"><li class="single-finished-task" onclick="editListItem(${subTasks.indexOf(e)}) id="f${finishedSubTasks.indexOf(e)}">${e}</li><img class="deleteSubtaskImg" onclick="deleteSubtask('${subTasks.indexOf(e)}')" src="/assets/img/delete.png" alt=""></div>`
         })
     }
 }
@@ -186,14 +186,14 @@ function addAssigneesSelection() {
     for (let i = 0; i < contactArr.length; i++) {
         let contact = contactArr[i]
         box.innerHTML +=/*html*/`
-          <li class=contact>
+          <li class=contact onclick="addboxClick(${i},${contact.id})">
            <div class="profile">
             <div class="icon" style="background-color:${contact.color}">${contact.initials}</div>
             <div class="name">${contact.fullName}</div>
           </div>
           <div class="checkbox-container">
             <input type="checkbox" id="check${i}">
-            <img class="profile-checkboxes" id="img-box${i}" src="/assets/img/checkbox.png" onclick="addboxClick(${i})" alt="checkbox">
+            <img class="profile-checkboxes" id="img-box${i}" src="/assets/img/checkbox.png"  alt="checkbox">
           </div>        
         </li>
         `
@@ -207,20 +207,9 @@ function renderEditIcons() {
     let iconDiv = document.getElementById('added-profile-initials-container')
     iconDiv.innerHTML = '';
     let imgArr = [];
-    assignees.forEach((element) => {
-        imgArr.push(`<div class="added-profile-initials" data-value="${element}" style="background-color:${contacts[element].color}">${contacts[element].initials}</div>`)
+    let filterAssignees = contacts.filter((e) => assignees.includes(e.id))
+    filterAssignees.forEach((element) => {
+        imgArr.push(`<div class="added-profile-initials" data-value="${element.id}" style="background-color:${element.color}">${element.initials}</div>`)
     })
-    iconDiv.innerHTML = `${imgArr.join('')}`
+    return iconDiv.innerHTML = `${imgArr.join('')}`
 }
-
-// function renderAddTaskBottomSection() {
-//     return/*html*/`
-// <div class="add-task-bottom-section">
-//     <h6 id="required-text"><span class="span">*</span>This field is required</h6>
-//     <div id="submit-btn-container">
-//         <button class="clearButton" onclick="clearAll()">Clear <img src="/assets/img/btn-x.png" alt="" /></button>
-//         <button id="createTaskButton" class="createTaskButton" disabled onclick="addTask('To-Do')">Create Task <img src="/assets/img/checkbtn-checkmark.png"
-//                 alt="" /></button>
-//     </div>
-// </div>
-// `};

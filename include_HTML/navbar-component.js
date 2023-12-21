@@ -4,18 +4,18 @@ function renderNavBar() {
     <div class="navBar">
         <img class="navLogo" src="/assets/img/NavLogo.png" alt="">
         <div class="navLinks">
-          <a class="navLinkImg" href="/assets/templates/summary.html">
+          <a class="navLinkImg" href="/html/summary.html">
           <img class="linkImg" src="/assets/img/nav-summary.png" alt=""><span>Summary</span></a>
-          <a class="navLinkImg" href="/assets/templates/add_task.html">
+          <a class="navLinkImg" href="/html/add_task.html">
           <img class="linkImg" src="/assets/img/nav-add-task.png" alt=""><span>Add Task</span></a>
-          <a class="navLinkImg" href="/assets/templates/board.html">
+          <a class="navLinkImg" href="/html/board.html">
           <img class="linkImg" src="/assets/img/nav-board.png" alt=""><span>Board</span></a>
-          <a class="navLinkImg" href="/assets/templates/contacts.html">
+          <a class="navLinkImg" href="/html/contacts.html">
           <img class="linkImg" src="/assets/img/nav-contacts.png" alt=""><span>Contacts</span></a>
         </div>
         <div class="navBottom">
-            <a class="navLinksBot" href="/assets/templates/privacy_policy.html">Privacy Policy</a>
-            <a class="navLinksBot" href="/assets/templates/legal_notice.html">Legal notice</a>
+            <a class="navLinksBot" href="/html/privacy_policy.html">Privacy Policy</a>
+            <a class="navLinksBot" href="/html/legal_notice.html">Legal notice</a>
         </div>
     `;
 }

@@ -3,7 +3,7 @@ function editCurrentTodo(task) {
     let popUp = document.getElementById('pop-up-container');
     popUp.innerHTML = /*html*/`
 <div class="edit-sections">
-    <div id="close-pop-up" onclick="closePopUp()"><img src="/assets/img/btn-x.png" alt=""></div>
+    <div id="close-pop-up" onclick="closePopUp()"><img id="popup-img" src="/assets/img/btn-x.png" alt=""></div>
     <div>
         <h6>Title</h6>
         <div id="add-task-titlte-container" class="input-group sub-container row">
@@ -28,7 +28,7 @@ function editCurrentTodo(task) {
                         src="/assets/img/arrow_drop_down.png" alt=""></button>
             </div>
             <div id="assign-ul" class="ul-parent d-none">
-                <ul id=assign-list class="drop-down-select-container edit-ul">
+                <ul id=assign-list class="drop-down-select-container edit-ul" onclick="event.stopPropagation()">
                     <li class=add-task-contact>
                         <div class="profile">
                             <div class="icon">*Bild*</div>
@@ -49,7 +49,7 @@ function editCurrentTodo(task) {
     <div>
         <h6>Due date</h6>
         <div id="add-task-date-input" class="input-group sub-container row">
-            <input id="date" class="form-control subtask-input" value="${task.date}" type="date" required />
+            <input id="date" class="form-control subtask-input" value="${task.date}" min="${getMinDate()}" type="date" required />
         </div>
         <div id="date-requirement-edit" class="d-none">Please set the actual or a furture date.</div>
         <h6>Prio</h6>
@@ -142,33 +142,9 @@ function editCurrentTodo(task) {
     addAssigneesSelection(),
     addInputHandler(),
     addSubtaskListener(),
-    pushEditAssignees(task)
+    pushEditAssignees(task),
+    checkBoxClicked(task.prio),
+    clickMedium(task.prio)
 };
 
 
-//returns an array of subtasks if available for listing them below the editable task
-function getSubList(subtaskList, finishedTaskList) {
-    let subLiArr = []
-    let finListArr = getEditFinishedList(finishedTaskList);
-    for (let i = 0; i < subtaskList.length; i++) {
-        let sub = subtaskList[i];
-        subTasks.push(sub)
-        subLiArr.push(`<li>${sub}</li>`)
-    }
-    return mergeSublists(subLiArr, finListArr)
-}
-    
-
-//returns an array of finished subtasks if available for listing them below the editable task
-function getEditFinishedList(finishedTaskList) {
-    let finLiArr = []
-    if (finishedTaskList.length === 0) {
-        return false
-    }
-    for (let i = 0; i < finishedTaskList.length; i++) {
-        let fin = finishedTaskList[i];
-        finishedSubTasks.push(fin)
-        finLiArr.push(`<li>${fin}</li>`)
-    }
-    return finLiArr
-}

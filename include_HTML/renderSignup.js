@@ -25,16 +25,25 @@ function renderSignup() {
                 <img class="input-img" src="assets/img/mail.png" alt="mail">
             </div>
             <div class="login-input-fields">
-                <input class="login-input password" id="create_password" type="password" min="8" required placeholder="Password"
-                    pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\\-]).{8,}$"
-                    title="Bitte verwende Groß- und Kleinbuchstaben, sowie ein Sonderzeichen und eine Nummern">
+                <input class="login-input password" 
+                        id="create_password" 
+                        type="password" 
+                        min="8" 
+                        required 
+                        placeholder="Password"
+                        pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\\-]).{8,}$|(?=[0-9].*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\\-]).{8,}$"
+                        title="Bitte verwende Groß- und Kleinbuchstaben, sowie ein Sonderzeichen(#?!@$%^&*-) und mindestens eine Nummer">
                     <div class="eye-container"><img class="input-img lock" src="assets/img/lock.png" alt="lock"></div>
             </div>
             <div class="login-input-fields">
-                <input class="login-input password" id="confirm_password" type="password" placeholder="Password Conformation">
+                <input class="login-input password" 
+                        id="confirm_password" 
+                        type="password" 
+                        placeholder="Password Conformation"
+                        title="Bitte verwende Groß- und Kleinbuchstaben, sowie ein Sonderzeichen(#?!@$%^&*-) und mindestens eine Nummer">
                 <div class="eye-container"><img class="input-img lock" src="assets/img/lock.png" alt="lock"></div>
             </div>
-            <div class="reminder d-none" id="pw-check-reminder">Ups?! Your passwords don't match or dont meet the requirements.</div>
+            <div class="reminder d-none" id="pw-check-reminder">Ups?! Your passwords don't match.</div>
         </div>
         <div>
             <div id="policy-check" class="d-flex">
@@ -45,7 +54,7 @@ function renderSignup() {
                     </div>
                     &nbsp;accept the&nbsp;
                     <span>
-                        <a href="/assets/templates/privacy_policy_signUp.html" target="_blank">Privacy Policy
+                        <a href="/html/privacy_policy_signUp.html" target="_blank">Privacy Policy
                         </a>
                     </span>
                 </label>
@@ -90,7 +99,7 @@ function renderLogin() {
                     <div id="password-container" class="login-input-fields">
                         <input class="login-input password" id="login-password" type="password" min="8" required
                             placeholder="Password"
-                            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\-]).{8,}$"
+                            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\\-]).{8,}$"
                             title="Bitter verwende mindestens eine Zahl und ein Sonderzeichen.">
                         <div class="eye-container"><img  class="lock input-img" src="assets/img/lock.png" alt="lock"></div>
                     </div>

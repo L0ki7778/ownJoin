@@ -1,40 +1,21 @@
+const doubleName="Contact already exists";
+const doubleMail="Email already exists";
+
+
 /**
  * Provides letters for comparison by rendering the
  * contacts
  * 
  * @type {Array<string>}
  */
-let letters = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
+let letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
 
-
+/**
+ * Initializes the application by performing the necessary setup tasks.
+ *
+ * @return {Promise<void>} A promise that resolves when the initialization is complete.
+ */
 async function init() {
   await getContacts(contactKey);
   getUser(sessionKey);
@@ -43,8 +24,16 @@ async function init() {
   navActive(3);
   hideUnusedLetters();
   calcBarHeight();
+  addContactFormListener();
+  addContactEditListener();
 }
 
+
+/**
+ * Renders the contacts for the active user.
+ * 
+ * @param {any} activeUser - The active user object.
+ */
 function renderContactPage(activeUser) {
   let body = document.querySelector("body");
   let section = document.querySelector("section");
@@ -61,63 +50,15 @@ function renderContactPage(activeUser) {
 
 }
 
-function renderRegister() {
-  let register = document.getElementById("register");
-  register.innerHTML = "";
 
-  for (let i = 0; i < letters.length; i++) {
-    const letter = letters[i];
-    register.innerHTML += `
-      <div class="register">
-        <span>${letter}</span>
-      </div>
-      <div class="registerLineDiv">
-        <div class="registerLine">
-        </div>
-      </div>
-      <div id="${letter}" class="test">
-      </div>
-    `;
-
-    renderContacts(`${letter}`);
-  }
-}
-
-function renderContacts(letter) {
-  let container = document.getElementById(`${letter}`);
-  container.innerHTML = "";
-  for (let i = 0; i < contacts.length; i++) {
-    let contact = contacts[i];
-    let initials = contact.initials.split("");
-    let initial = initials[0];
-    if (contacts[i].initials.length > 1) {
-      initial = contact.initials.slice(0, 1);
-    } else {
-      initial = contact.initials;
-    }
-
-    if (letter === `${initial}`) {
-      container.innerHTML += `
-        <div id="${contact.name}${i}" onclick="openProfile('${contact.id}'); contactActive('${contact.name}${i}');  setZindex();" class="contact">
-        
-        <div>
-            <span id="${contact.id}" class="initials">${contact.initials}</span>
-        </div>
-        <div class="nameLinkDiv">
-            <span class="fullName">${contact.fullName}</span>
-            <a class="emailLinks" href="#">${contact.email}</a>
-        </div>
-    </div>`;
-      getRandomColor(contact.id, contact.color);
-    }
-  }
-}
-
+/**
+ * Hides the unused letters in the register where there are no contacts.
+ * 
+ */
 function hideUnusedLetters() {
   let divElements = document.querySelectorAll(".test");
   let divRegister = document.querySelectorAll(".register");
   let divLine = document.querySelectorAll(".registerLineDiv");
-
   divElements.forEach((element, index) => {
     if (element.innerHTML.trim() === "") {
       divRegister[index].classList.add("d-none");
@@ -129,36 +70,41 @@ function hideUnusedLetters() {
   });
 }
 
-function openProfile(id) {
-  let userProfile = document.getElementById("userProfile");
-  let user = [];
-  contacts.map((e) => {
-    if (e.id == id) {
-      user.push(e);
-    }
-  });
-  let e = user[0];
-  userProfile.innerHTML = "";
 
-  userProfile.innerHTML = `<div>
-    <div class="topProfile">
-        <div class="profile-initials-pseudo-img" style="background-color:${e.color}">
-           ${e.initials}
-        </div>
-    <div class="nameProfile"><h2 class="h2">${e.fullName}</h2><div class="buttonsPopUp"><Button onclick="editProfile(${e.id})" class="buttonPopUp"><img src="/assets/img/edit.png" alt=""> Edit</Button><Button onclick="deleteContact(${e.id})" class="buttonPopUp"><img src="/assets/img/delete.png" alt=""> Delete</Button></div></div>
-    </div>
-    <p class="pProfile">Contact Information</p>
-    <p><b>Email</b></p>
-    <a class="profileLink" href="">${e.email}</a>
-    <p class="pMail"><b>Phone</b></p>
-    <p>${e.phoneNumber}</p>
-  </div>
-  <div id="buttonsPopUpMobile" class="buttonsPopUpMobile d-none"><Button onclick="editProfile(${e.id}); addDNone();" class="buttonPopUpMobile"><img src="/assets/img/edit.png" alt=""> Edit</Button><Button onclick="deleteContact(${e.id}); addDNone();" class="buttonPopUpMobile"><img src="/assets/img/delete.png" alt=""> Delete</Button></div>`;
+
+
+
+/**
+ * Creates a contact based on the values entered in the profile form.
+ *
+ * @return {object} This function returns a new contact if the requirements are met.
+ */
+function editContact(contactId) {
+  let index= contacts.findIndex(e=>e.id==contactId)
+  contacts.splice(index,1)
+  let fullName = document.getElementById("editName");
+  let initials = createInitials(fullName.value);
+  let email = document.getElementById("editEmail");
+  let nameObj = differMultipleNames(fullName.value);
+  let contact= editObject(nameObj,initials,contactId);
+  if(checkEditDuplicateMail(email.value)){return}
+  else if(checkEditDuplicateName(fullName.value)){return}
+  else{
+    return contactCreation(contact),openProfile(contactId);}
 }
 
+
+
+
+
+
+/**
+ * Opens the edit popup for the contact you clicked on from the register.
+ * 
+ * @param {string} id - This is the id of the contact you click on. 
+ */
 function editProfile(id) {
   let object = contacts.filter((contact) => contact.id === id)[0];
-  let index = contacts.indexOf(object);
   openPopUpEditContact(object);
   document.getElementById("editName").value = object.fullName;
   document.getElementById("editEmail").value = object.email;
@@ -166,49 +112,71 @@ function editProfile(id) {
   let img = document.getElementById("profile-img-div");
   img.innerText = object.initials;
   img.style.backgroundColor = object.color;
-  let button = document.getElementById("saveButton");
-  button.setAttribute("onclick", `saveContact(${id})`);
 }
 
+
+/**
+ * Opens the edit popup for a contact. 
+ */
 function openPopUpEditContact() {
   document.getElementById("editContactPopUp").classList.remove("d-none");
 }
 
+
+/**
+ * Closes the edit popup for a contact. 
+ */
 function closePopUpEditContact() {
   document.getElementById("editContactPopUp").classList.add("d-none");
 }
 
+
+/**
+ * Safes the eddited contact.
+ * 
+ * @param {string} id - This is the id of the contact you're edditing.
+ * @returns 
+ */
 async function saveContact(id) {
   if (id == undefined) {
-    return;
-  }
+    return;}
   let getObject = contacts.filter((e) => e.id == id)[0];
   let index = contacts.findIndex((e) => e.id == id);
   let editedObject = editObject(getObject);
-
   contacts[index] = editedObject;
-
   await setContacts(contactKey, contacts);
   closePopUpEditContact();
   init();
   openProfile(id);
 }
 
+
+/**
+ * Deletes the current contact.
+ * 
+ * @param {string} id - This is the id of the contact you're edditing.
+ */
 async function deleteContact(id) {
   let object = contacts.find((contact) => contact.id === id);
-
   if (object) {
     let index = contacts.indexOf(object);
-    contacts.splice(index, 1);
-  }
+    contacts.splice(index, 1);}
   await setContacts(contactKey, contacts);
   init();
 }
 
+
+/**
+ * Opens the popup where you can add a contact.
+ */
 function openPopUpAddContact() {
   document.getElementById("addContactPopUp").classList.remove("d-none");
 }
 
+
+/**
+ * closes the popup where you can add a contact.
+ */
 function closePopUpAddContact() {
   let popUpContainer = document.getElementById("addContactPopUp");
   let popUp = document.getElementById("addContact");
@@ -219,15 +187,63 @@ function closePopUpAddContact() {
   }, 30);
 }
 
-async function createContact() {
-  let fullName = document.getElementById("profileName").value;
+
+/**
+ * Creates a contact based on the values entered in the profile form.
+ *
+ * @return {object} This function returns a new contact if the requirements are met.
+ */
+function createContact() {
+  let fullName = document.getElementById("profileName");
+  let initials = createInitials(fullName.value);
+  let email = document.getElementById("profileEmail");
+  let nameObj = differMultipleNames(fullName.value);
+  let contact= newContactObject(nameObj,initials);
+  if(checkForDuplicateMail(email.value)){return}
+  else if(checkForDuplicateName(fullName.value)){return}
+  else{contactCreation(contact)}
+}
+
+
+/**
+ * Creates a new contact and adds it to the list of contacts.
+ *
+ * @param {Object} contact - The contact object to be added.
+ * @return {Promise} A promise that resolves when the contact is successfully added.
+ */
+async function contactCreation(contact){
+  contacts.push(contact);
+    await setContacts(contactKey, contacts);
+    closePopUpAddContact();
+    renderRegister();
+    hideUnusedLetters();
+    clearContactInputs();
+    return closePopUpEditContact();
+}
+
+function clearContactInputs(){
+  document.getElementById("profileName").value = "";
+  document.getElementById("profileEmail").value = "";
+  document.getElementById("profileNumber").value = "";
+  document.getElementById("editName").value = "";
+  document.getElementById("editEmail").value = "";
+  document.getElementById("editNumber").value = "";
+}
+
+
+/**
+ * Generates a new contact object based on the given name array and initials.
+ *
+ * @param {Object} nameObj - An array containing the first name and last name of the contact.
+ * @param {string} initials - The initials of the contact.
+ * @return {Object} The newly generated contact object.
+ */
+function newContactObject(nameObj,initials){
   let email = document.getElementById("profileEmail").value;
   let number = document.getElementById("profileNumber").value;
-  let initials = createInitials(fullName);
-  let nameArr = differMultipleNames(fullName);
-  let firstName = nameArr.firstName;
-  let name = nameArr.lastName;
-
+  let fullName=typeof nameObj == "object" ? nameObj.firstName + " " + nameObj.lastName : nameObj
+  let firstName = nameObj.firstName||" ";
+  let name = nameObj.lastName||nameObj;
   let contact = {
     fullName: fullName,
     firstName: firstName,
@@ -237,34 +253,25 @@ async function createContact() {
     color: randomColor(),
     phoneNumber: number,
     initials: initials.toUpperCase(),
-  };
-  contacts.push(contact);
-  await setContacts(contactKey, contacts);
-  closePopUpAddContact();
-  init();
+  };return contact
 }
 
-function randomColor() {
-  let colors = [
-    "#FF7A00",
-    "#9327FF",
-    "#6E52FF",
-    "#FC71FF",
-    "#FFBB2B",
-    "#1FD7C1",
-    "#462F8A",
-    "#FF4646",
-    "#00BEE8",
-  ];
-  let randomIndex = Math.floor(Math.random() * colors.length);
-  return colors[randomIndex];
-}
 
+/**
+ * Gives a color to an created contact by his id.
+ * 
+ * @param {string} id - This is the id of the contact you're giving a color.
+ * @param {string} color - This is the color you're giving to the contact.
+ */
 function getRandomColor(id, color) {
   let divName = document.getElementById(id);
   divName.style.backgroundColor = color;
 }
 
+
+/**
+ * Calculates the barheight of the contact scroll div.
+ */
 function calcBarHeight() {
   let header = document.querySelector("header");
   let item = document.getElementById("contacts-bar");
@@ -273,6 +280,10 @@ function calcBarHeight() {
   calcHeight();
 }
 
+
+/**
+ * Calculates the height of the add new contact popup.
+ */
 function calcHeight() {
   let header = document.querySelector("header");
   let btn = document.getElementById("addNewContact");
@@ -281,6 +292,10 @@ function calcHeight() {
   register.style.height = height - 20 + "px";
 }
 
+
+/**
+ * Clears all inputs of the add task page.
+ */
 function clearContactsForm() {
   let input = document.getElementsByClassName("contact-creation-inputs");
   for (let i = 0; i < input.length; i++) {
@@ -288,33 +303,53 @@ function clearContactsForm() {
   }
 }
 
-function editObject(person) {
-  let object = {
-    color: person.color,
-    id: person.id,
-    fullName: document.getElementById("editName").value,
-    email: document.getElementById("editEmail").value,
+
+/**
+ * Takes the informations that got eddited and returns the eddited contact.
+ * 
+ * @param {string} person - This is the id of the contact you have clicked on in the contact list. 
+ * @returns the eddited contact information.
+ */
+function editObject(nameObj,initials,contactId) {
+  let email = document.getElementById("editEmail").value;
+  let number = document.getElementById("editNumber").value;
+  let fullName=typeof nameObj == "object" ? nameObj.firstName + " " + nameObj.lastName : nameObj
+  let firstName = nameObj.firstName||" ";
+  let name = nameObj.lastName||nameObj;
+  let contact = {
+    fullName: fullName,
+    id: contactId,
+    email: checkForDuplicateMail(email.value),
     phoneNumber: document.getElementById("editNumber").value,
-    initials: createInitials(document.getElementById("editName").value),
-    firstName: differMultipleNames(document.getElementById("editName").value)
-      .firstName,
-    name: differMultipleNames(document.getElementById("editName").value)
-      .lastName,
-  };
-  return object;
+    initials: initials.toUpperCase(),
+    firstName: firstName,
+    name: name,
+    id: parseInt(contactId),
+    email: email,
+    color: randomColor(),
+    phoneNumber: number,
+  };return contact
 }
+
+
+/**
+ * Higlights the contact you have clicked on in the contact list.
+ * 
+ * @param {string} person - This is the id of the contact you have clicked on in the contact list.
+ */
 function contactActive(id) {
   let allElements = document.querySelectorAll(".contact");
   allElements.forEach((element) => {
-    if (element.id !== id) {
-      element.classList.remove("activeContact");
-    }
+    if (element.id !== id) {element.classList.remove("activeContact")}
   });
-
   let active = document.getElementById(id);
   active.classList.add("activeContact");
 }
 
+
+/**
+ * Swappes the mobile Buttons of the mobile contact page.
+ */
 function setZindex() {
   let div = document.getElementById('zIndex');
   div.classList.add('zIndex');
@@ -326,6 +361,10 @@ function setZindex() {
   menu.classList.remove('d-none');
 }
 
+
+/**
+ * Swappes the mobile Buttons of the mobile contact page the otherway around.
+ */
 function removeZindex() {
   let div = document.getElementById('zIndex');
   div.classList.remove('zIndex');
@@ -337,6 +376,10 @@ function removeZindex() {
   button.classList.remove('d-none');
 }
 
+
+/**
+ * Adds d-none to two buttons.
+ */
 function removeDNone() {
   let button = document.getElementById('buttonsPopUpMobile');
   button.classList.remove('d-none');
@@ -344,6 +387,10 @@ function removeDNone() {
   menu.classList.add('d-none');
 }
 
+
+/**
+ * Removes d-none of two buttons.
+ */
 function addDNone() {
   let button = document.getElementById('buttonsPopUpMobile');
   button.classList.add('d-none');
@@ -351,6 +398,10 @@ function addDNone() {
   menu.classList.remove('d-none');
 }
 
+
+/**
+ * Clears the HTML of the inputfields in the edit contact popup.
+ */
 function clearHTML() {
   if (document.getElementById('editContactPopUp') !== null) {
     let mobileBtn = document.getElementById('mobile-add-btn');
@@ -361,3 +412,20 @@ function clearHTML() {
     popUpTwo.parentNode.removeChild(popUpTwo);
   }
 }
+
+document.addEventListener('click', function(event) {
+  let zIndexDiv = document.getElementById('zIndex');
+  let buttonsPopUpMobile = document.getElementById('buttonsPopUpMobile');
+
+  // Überprüfen, ob das geklickte Element die DIV mit der ID "zIndex" ist
+  if (event.target === zIndexDiv) {
+      // Überprüfen, ob die Klasse "d-none" noch nicht zugewiesen ist
+      if (!buttonsPopUpMobile.classList.contains('d-none')) {
+          // Füge die Klasse "d-none" hinzu
+          buttonsPopUpMobile.classList.add('d-none');
+          let menu = document.getElementById('menuContactButtonMobile');
+          menu.classList.remove('d-none');
+      }
+  }
+});
+

@@ -351,11 +351,11 @@ label {
     }
 
     &:hover #cross #add-subtask #sub-btn-plus {
-        height: 16px !important;
+        height: 1rem !important;
     }
 
     &:hover #add-subtask {
-        height: 16px !important;
+        height: 1rem !important;
     }
 }
 
@@ -436,9 +436,15 @@ input:hover {
 
 #added-profile-initials-container{
 display: flex;
+flex-wrap: wrap;
 margin-left:1rem;
+overflow-x: scroll;
+-ms-overflow-style: none;  
+    scrollbar-width: none; 
 }
-
+#added-profile-initials-container::-webkit-scrollbar {
+    display: none;
+  }
 .added-profile-initials{
     border-radius: 50%;
     height: 2.1rem;
@@ -645,7 +651,8 @@ textarea {
 }
 
 #task-list {
-    display: block;
+    display: flex;
+    flex-direction: column;
     top: 0;
     left: 0;
     position: relative;
@@ -682,13 +689,13 @@ textarea {
 }
 
 #info{
+    display: none;
     z-index: 999;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     margin:auto;
-    display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 23rem;
@@ -697,16 +704,17 @@ textarea {
     font-size: 1.5rem;
     color:white;
     background-color:#2A3647;
-    transform: translateY(8rem);
+    transform: translateY(40rem);
 }
 
 .push-up{
+    display: flex !important;
     animation: pushUp .2s forwards;
 }
 
 @keyframes pushUp {
     0% {
-        transform: translateY(8rem);
+        transform: translateY(40rem);
     }
     100% {
         transform: translateY(-40rem);
@@ -753,4 +761,34 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 .profile-checkboxes{
     position: absolute;
     right: 1rem;
+}
+.subTaskListFlex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subTaskListFlex:focus-within{
+    border-bottom: 1px solid #29ABE2;
+}
+.edit-input{
+    outline:none!important;
+    background-color: transparent;
+    border-bottom: 1px #29ABE2!important;
+}
+
+.single-subtask:hover{
+    cursor: url('/assets/img/edit.png')16 16, auto;
+}
+
+.edit-input:focus{
+    outline:none!important;
+    background-color: transparent;
+}
+
+.deleteSubtaskImg {
+    width: fit-content;
+}
+.deleteSubtaskImg:hover {
+    cursor: pointer;
 }

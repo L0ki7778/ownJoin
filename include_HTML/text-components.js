@@ -5,7 +5,7 @@
 function renderPrivacyPolicy() {
   return /*html*/ `
    <div id="german" class="d-none">
-       <div class=arrow><h1 class="titleH1">Datenschutzerklärung</h1><a id="help-arrow" href="/assets/templates/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
+       <div class=arrow><h1 class="titleH1">Datenschutzerklärung</h1><a id="help-arrow" href="/html/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
 
        <p>Verantwortlicher im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO),
             ist:
@@ -249,7 +249,7 @@ function renderPrivacyPolicy() {
     </div>
 
     <div id="english" >
-        <div class=arrow><h1 class="titleH1">Privacy Policy</h1><a id="help-arrow" href="/assets/templates/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
+        <div class=arrow><h1 class="titleH1">Privacy Policy</h1><a id="help-arrow" href="/html/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
         <p>Controller for the purposes of data protection laws, in particular the EU General Data Protection Regulation
             (GDPR),
             is:
@@ -496,17 +496,17 @@ function renderPrivacyPolicy() {
 function renderLegalNotice() {
   return /*html*/ `
     <div class="scroll-help">
-    <div class="arrow"><h1 class="titleH1">Legal Notice</h1> <a id="help-arrow" href="/assets/templates/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
+    <div class="arrow"><h1 class="titleH1">Legal Notice</h1> <a id="help-arrow" href="/html/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
     <h2>Imprint</h2>
     <ul>
         <li>Simon Golenia</li>
         <li>René Heller</li>
         <li>Dustin Rohrschneider</li>
-        <li>Musterweg 7</li>
-        <li>77777 Musterdorf</li>
+        <li>Im Rehwinkel 7</li>
+        <li>66620 Nonnweiler</li>
     </ul>
     <h2>Exploring the Board</h2>
-    <p>Email: muster@mail.de</p>
+    <p>Email: drohrschneider@web.de</p>
     <h2>Acceptance of terms</h2>
     <p>By accessing and using <span class="colorJoin">Join</span> (Product), you acknowledge and agree to the following terms and conditions, and any policies, guidelines, or amendments thereto that may be presented to you from time to time. We, the listed students, may update or change the terms and conditions from time to time without notice.</p>
     <h2>Scope and ownership of the product</h2>
@@ -532,7 +532,7 @@ function renderLegalNotice() {
 function renderHelp() {
   return /*html*/ `
     <div class="scroll-help">
-    <div class="arrow"><h1 class="titleH1">Help</h1> <a id="help-arrow" href="/assets/templates/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
+    <div class="arrow"><h1 class="titleH1">Help</h1> <a id="help-arrow" href="/html/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
 
     <p>Welcome to the help page for <span class="colorJoin">Join</span>, your guide to using our kanban project management tool. Here, we'll provide an overview of what <span class="colorJoin">Join</span> is, how it can benefit you, and how to use it.</p>
     

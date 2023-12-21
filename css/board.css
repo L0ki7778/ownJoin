@@ -15,6 +15,14 @@ main {
     align-items: unset;
 }
 
+#assign-list li:hover{
+        background-color: rgba(0, 0, 0, 0.08);
+}
+
+#assign-list li{
+    width: 95%;
+}
+
 .cloumn {
     display: flex;
     flex-direction: column;
@@ -49,21 +57,21 @@ main {
 }
 
 .drag-area {
+    position: relative;
     background-color: #E7E7E7;
     border: 2px dashed #B8B8B8;
     border-radius: 15px;
-    box-shadow: 0px 0px 1px 1px rgb(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    height: 4rem;
+    height: 100%;
     color: black;
 }
 
 .drag-area-highlight {
-    background-color: rgb(48, 231, 48);
+    background-color: #009494;
     box-shadow: none;
     border: none;
 }
@@ -76,6 +84,7 @@ main {
     width: 100%;
     box-shadow: 0px 0px 8px 0px rgb(0, 0, 0, 0.2);
     word-break: break-all;
+    clip-path: margin-box;
 }
 
 .headline {
@@ -109,6 +118,24 @@ main {
     margin: auto;
     right: 1rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: #2A3647;
+    color: white;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    transition: box-shadow 0.1s ease;
+}
+.buttonAddMobile {
+    position: absolute;
+    top: 0;
+    height: 3rem;
+    bottom: 0;
+    margin: auto;
+    right: 1rem;
+    display: none;
     justify-content: center;
     align-items: center;
     padding: 1rem;
@@ -291,8 +318,7 @@ h5 {
     display: flex;
     background-color: white;
     inset: 0;
-    height: 85%;
-    margin: auto;
+    margin: 3rem auto;
     padding: 0 5.5em;
     width: 80%;
     border-radius: 30px;
@@ -439,6 +465,7 @@ h6:not(:first-of-type):not(:nth-of-type(4)) {
     height: 2em;
     padding: 9px;
     border-radius: 50%;
+    z-index: 2;
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.05);
@@ -507,6 +534,7 @@ h6 :hover {
 
 .profile-initials-container {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .profile-initials {
@@ -536,7 +564,7 @@ ul {
     width: 80%;
     display: flex;
     flex-direction: column;
-    overflow: hidden !important;
+    overflow-y: scroll !important;
     list-style-type: none !important;
     list-style-position: outside !important;
     margin: 0 !important;
@@ -551,7 +579,7 @@ ul {
 
 #assignement{
     height: auto;
-    max-height: none!important;
+    overflow: scroll !important;
 }
 
 #assignment .contact:hover {
@@ -580,6 +608,7 @@ ul {
 
 #single-todo {
     overflow-y: auto !important;
+    clip-path: unset;
     overflow-x: hidden;
     max-height: calc(46rem + (.75rem + 1rem)) !important;
     ;
@@ -671,4 +700,16 @@ ul {
     position: absolute;
     right: 1rem;
 }
+.single-subtask:hover {
+    cursor: url(/assets/img/edit.png), auto;
+}
 
+
+.no-tasks{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}

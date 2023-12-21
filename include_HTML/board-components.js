@@ -21,9 +21,12 @@ function renderComponents(activeUser) {
                     <img id="#search-img" src="/assets/img/search.png" alt="">
                 </button>
             </div>
-            <div class="buttonAdd" onclick="openPopUp(),changeStatus('To-Do'),addAssigneesSelection()">Add Task
+            <div class="buttonAdd" onclick="openPopUp(),changeStatus('To-Do'),addAssigneesSelection(),clickMedium('medium')">Add Task
                 <img id="white-plus" src="/assets/img/white-plus.png" alt="">
             </div>
+            <a href="/html/add_task.html" class="buttonAddMobile">
+                <img id="white-plus" src="/assets/img/white-plus.png" alt="">
+            </a>
         </div>
         <div id="content-box" class="content">
             <div class="drag-headlines">
@@ -94,8 +97,9 @@ function generateTodoHTML(element) {
                 <div>Subtasks</div>
             </div>
         </div>
-        <div class="footer-box">
+        <div id="footer${element.id}" class="footer-box">
             <div data-value="${element.assignees}" class="profile-initials-container"></div>
+            <span id="hidden-elements-count${element.id}"></span>
             <div class="prioriy-container" >${returnPriority(element.prio)}</div>
         </div>
     </div>
@@ -120,7 +124,7 @@ function renderPopUpAddTask() {
     let popUp = document.getElementById('pop-up-container');
     popUp.innerHTML = /*html*/`
         <div id="task-container">
-            <div id="close-pop-up" onclick="closePopUp()"><img src="/assets/img/btn-x.png" alt=""></div>
+            <div id="close-pop-up" onclick="closePopUp()"><img id="close-pop-up-img"  src="/assets/img/btn-x.png" alt=""></div>
             ${renderAddTaskSections()}
         </div>
         `,
@@ -133,12 +137,18 @@ function renderTodoIcons() {
     let divs = document.getElementsByClassName('profile-initials-container');
     for (let i = 0; i < divs.length; i++) {
         let div = divs[i];
+        let contactArr=[]
         let index = div.getAttribute('data-value');
         if (index && index.trim() !== '') {
             index = index.split(',');
-            for (let j = 0; j < index.length; j++) {
+            index.forEach(element => {
+                if(contacts.filter((e) => e.id == element)[0]){
+                    contactArr.push(contacts.filter((e) => e.id == element)[0])
+                }
+            });
+            for (let j = 0; j < contactArr.length; j++) {
                 div.innerHTML += /*html*/`
-                    <div class="profile-initials" data-value="${index[j]}" style="background-color:${contacts[index[j]].color}">${contacts[index[j]].initials}</div>
+                    <div class="profile-initials" data-value="${contactArr[j].id}" style="background-color:${contactArr[j].color}">${contactArr[j].initials}</div>
                 `;
             }
         }
@@ -151,7 +161,8 @@ function renderSingleTodo(id) {
     if (id === undefined) { return }
     let index = allTasks.findIndex((task) => task.id === id);
     let element = allTasks[index];
-    editTask = element;
+    editTask=element//IMPORTANT! Edit Task NOT POSSIBLE WITHOUT SETTING THE VALUE OF THE GLOBAL VARIABLE HERE
+    let contactArr = contacts.filter((e) => element.assignees.includes(e.id));
     let obj = generateVarObj(element); // generateVarObj()-->board.js:322
     let popUp = document.getElementById('pop-up-container');
     popUp.innerHTML = /*html*/`
@@ -163,9 +174,9 @@ function renderSingleTodo(id) {
             <div id="todo-text-content" class="todo-content descriptionBoardPopUp">${obj.text}</div>
             <div id="dead-line" class="descriptionBoardPopUp"><span>Due date:  </span>${obj.date}</div>
             <div id="pop-priority" class="descriptionBoardPopUp"><span>Priority:  </span>${obj.priority} ${returnPriority(element.prio)}</div>
+            <h6 class="descriptionBoardPopUp">Assigned to</h6>
             <ul id="assignement">
-                <h6 class="descriptionBoardPopUp">Assigned to</h6>
-                ${getAssignList(element.assignees)}
+                ${getAssignList(contactArr)}
             </ul>
             <ul id=subtask-list data-id="${element.id}">
                 <h6  class="descriptionBoardPopUp">Subtasks</h6>
@@ -178,6 +189,7 @@ function renderSingleTodo(id) {
         </div>
     </div>`,
         styleTodo();
+        
 
 }
 
@@ -194,7 +206,7 @@ function styleTodo() {
 //changes the pop-up size according to the content
 function styleAddTask() {
     let popUp = document.getElementById('pop-up-container');
-    popUp.style = 'width:80%; padding:0 5.5rem';
+    popUp.style = 'width:80%; padding:0 5.5rem 19rem';
 }
 
 
@@ -202,7 +214,7 @@ function styleAddTask() {
 function getAssignList(assignees) {
     let liArr = []
     for (let i = 0; i < assignees.length; i++) {
-        let contact = contacts[assignees[i]];
+        let contact = assignees[i];
         liArr.push(`<li class=contact><div class="profile"><div class="icon" style="background-color:${contact.color}">${contact.initials}</div><div class="name">${contact.fullName}</div></div></li>`)
     }; return liArr.join('')
 }
@@ -225,17 +237,6 @@ function getSubCheckList(subtaskList, finishedTaskList) {
             </div>
         </li>`)
     };return mergeSublists(subLiArr, finListArr)
-}
-
-
-//Merges two sublists and returns a string.
-function mergeSublists(sub, fin){
-    if (fin !== false) {
-        sub = sub.concat(fin)
-        return sub.join('')
-    } else {
-        return sub.join('')
-    }
 }
 
 

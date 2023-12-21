@@ -11,6 +11,7 @@ async function init() {
     renderComponents(activeUser);
     navActive(2);
     updateBoard();
+    hideExcessElements();
 }
 
 
@@ -29,7 +30,7 @@ function updateBoard(searchArr) {
     taskFilter(fliterArr, "Done", doneArr);
     checkDragArea();
     hideBar();
-    renderTodoIcons()
+    renderTodoIcons();
 }
 
 
@@ -58,6 +59,15 @@ function taskFilter(arr, string) {
  */
 function startDragging(id) {
     currentDraggedElement = id;
+    let divs = document.querySelectorAll(".no-tasks");
+    let areas = document.querySelectorAll(".drag-area");
+    
+    divs.forEach(div => div.parentNode.removeChild(div));
+
+    areas.forEach(area => {
+        area.style = '';
+        area.style.justifyContent = 'flex-start';
+    });
 }
 
 
@@ -87,6 +97,7 @@ async function moveTo(status) {
             sortArray(); // the latest task(timestamp) gets the last position; board.js:123
             setAllTasks(tasksKey, allTasks); // update the tasks and send them to remote storage; script.js:186
             updateBoard();//the board gets updated immediately after the drop; board.js:24
+            hideExcessElements();
             hideBar(); //if no subtasks exist within a todo/task, the progressbar gets hidden; board.js:137
         }, 50);
     }
@@ -111,7 +122,6 @@ function highlight(id) {
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
-
 
 
 /**
@@ -166,9 +176,11 @@ function hideBar() {
  *
  */
 function closePopUp() {
-    clearTasks()
+    clearTasks();
     let popup = document.getElementById('add-pop-up');
     let container = document.getElementById('pop-up-container');
+    let body = document.querySelector("body");
+    body.removeEventListener("click", handleClickAssign);
     container.style.animation = "slide-out 0.15s ease-in-out forwards"
     setTimeout(() => {
         popup.classList.add('d-none')
@@ -249,19 +261,23 @@ function changeStatus(string) {
  *
  */
 function checkDragArea() {
-    let dragArea = document.getElementsByClassName('drag-area')
-    for (let i = 0; i < dragArea.length; i++) {
-        if (dragArea[i].innerHTML.includes('Technical Task') || dragArea[i].innerHTML.includes('User Story')) {
-            if (dragArea[i].firstElementChild) {
-                dragArea[i].style = 'justify-content: flex-start';
-                dragArea[i].style = 'border:none;background-color: transparent;border-radius:3rem;justify-content: flex-start'
-            }
+    let dragAreas = document.getElementsByClassName('drag-area');
+    for (let i = 0; i < dragAreas.length; i++) {
+        if (dragAreas[i].innerHTML.includes('Technical Task') || dragAreas[i].innerHTML.includes('User Story')) {
+            if (dragAreas[i].firstElementChild) {
+                dragAreas[i].style = 'justify-content: flex-start; border:none; background-color: transparent; border-radius:3rem;';}
         } else {
-            dragArea[i].style = '';
-            dragArea[i].innerText = 'No tasks to do';
+            dragAreas[i].style = '';
+            if (!dragAreas[i].querySelector('.no-task')) {
+                let div = document.createElement('div');
+                div.classList.add('no-tasks');
+                div.innerText = "No tasks to do";
+                dragAreas[i].appendChild(div);
+            }
         }
     }
 }
+
 
 /////////////////////////Do-not-touch////////////////////////////////
 // /**
@@ -294,6 +310,7 @@ function addSearchBarHandler() {
             return title.includes(searchTerm) || description.includes(searchTerm);
         });
         updateBoard(filteredTasks);
+        hideExcessElements();
     }
     input.oninput = search;
 }
@@ -371,6 +388,7 @@ function editOk(status, index, prio) {
     editTodoInAllTasks(status, index, prio);
     closePopUp();
     updateBoard();
+    hideExcessElements();
 }
 
 
@@ -474,7 +492,6 @@ function refreshProgressBar(id, task) {
     setTimeout(() => {
         bar.setAttribute('style', `width: ${width}%`)
     }, 500);
-    console.log(width)
 }
 
 
@@ -490,3 +507,43 @@ function initialProgressWidth(task) {
     let width = Math.round((min / max) * 100);
     return width
 }
+
+// Funktion, um Elemente zu verstecken, wenn ihre Anzahl 5 übersteigt
+function hideExcessElements() {
+    let containers = document.querySelectorAll('.profile-initials-container');
+    let existingContacts=[];
+    containers.forEach(function(container) {
+      // Extrahiere die Datenwerte und zähle die Anzahl der Elemente
+      let dataValue = container.getAttribute('data-value');
+      let elements = dataValue.split(',').map(function(item) {
+        return item.trim();
+      });
+  
+      // Suche nach dem individuellen span-Element
+      let countSpan = container.querySelector(`span[id^="hidden-elements-count"]`);
+  
+      if (!countSpan) {
+        // Erstelle das span-Element, wenn es nicht existiert
+        countSpan = document.createElement('span');
+        countSpan.id = 'hidden-elements-count' + container.id.replace('footer', '');
+        // Füge das span-Element nach dem Container ein
+        container.parentNode.insertBefore(countSpan, container.nextSibling);
+      }
+      elements.forEach((e,i)=>{if(contacts[i] && contacts[i].id == e){if(!existingContacts.includes(e)){existingContacts.push(e)}}})
+      // Überprüfe, ob die Anzahl der Elemente größer als 5 ist
+      console.log(existingContacts)
+      if (existingContacts.length > 5) {
+        // Verstecke die überschüssigen Elemente
+        for (let i = 5; i < elements.length; i++) {
+          container.children[i].style.display = 'none';
+        }
+  
+        // Zeige die Anzahl der versteckten Elemente im Text an
+        let hiddenElementsCount = elements.length - 5;
+        countSpan.textContent = hiddenElementsCount > 0 ? '+' + hiddenElementsCount : '';
+      } else {
+        // Falls die Anzahl der Elemente nicht größer als 5 ist, setze den Text auf leer
+        countSpan.textContent = '';
+      }
+    });
+  }

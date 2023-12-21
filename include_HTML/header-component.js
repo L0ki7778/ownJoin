@@ -5,15 +5,15 @@ function renderHeader(user) {
         <h4 class="pHeader">Kanban Project Management Tool</h4>
         <img class="mobileImgHeader" src="/assets/img/join-logo.png" alt="">
         <div class="imgsHeader">
-            <a href="/assets/templates/help.html">
+            <a href="/html/help.html">
                 <img class="helpIcon" src="/assets/img/help.png" alt=""></a>
             <div id="profile-icon" onclick="openMenu()">${user[0].initials}</div>
         </div>
         <div id="header-icon-menu" class="d-none">
-            <a class="menu-option" href="/assets/templates/legal_notice.html">
+            <a class="menu-option" href="/html/legal_notice.html">
                 Legal Notice
             </a>
-            <a class="menu-option" href="/assets/templates/privacy_policy.html">
+            <a class="menu-option" href="/html/privacy_policy.html">
                 Privacy Policy
             </a>
             <a class="menu-option" href="#" onclick="logOut()">

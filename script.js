@@ -4,6 +4,7 @@ let assignees=[]; //needed for rendering and manupulatin contact-assignments to 
 let awaitArr=[]; //auxiliary array for filtering awaiting feedback tasks
 let counter = 0;  //auxiliary variable for manipulating finished subtasks and adjusting the progressbar
 let contacts = []; // storage and retrieval of contacts
+let contactId;
 let currentDraggedElement; //variable for drag and drop
 let doneArr=[]; //auxiliary array for filtering done tasks
 let editArr=[];
@@ -383,5 +384,18 @@ function createInitials(name) {
  */
 function logOut(){
   sessionStorage.clear();
-  window.location.replace("/Index.html");
+  window.location.replace("/index.html");
+}
+
+
+/**
+ * Generates a random color from a predefined list of colors.
+ *
+ * @return {string} The randomly generated color.
+ */
+function randomColor() {
+  let colors = ["#FF7A00", "#FF5EB3", "#6E52FF", "#9327FF", "#00BEE8", "#1FD7C1", "#FF745E",
+    "#FFA35E", "#FC71FF", "#FFC701", "#0038FF", "#C3FF2B", "#FFE62B", "#FF4646", "#FFBB2B"];
+  let randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
 }
