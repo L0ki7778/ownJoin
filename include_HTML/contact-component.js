@@ -53,6 +53,12 @@ function renderContactPopUp(){
 function renderContactSection(){
     return/*html*/`
         <div class="contactSection">
+            <div id="mobile-edit-container">
+                <Button  class="mobile-edit">
+                <img src="/assets/img/edit.png" alt=""> Edit</Button>
+                <Button  class="mobile-edit">
+                <img src="/assets/img/delete.png" alt=""> Delete</Button>
+            </div>
             <div id="contacts-bar" class="contactsDiv">
                 <div id="addNewContact" class="contactButtonDiv">
                     <button onclick="openPopUpAddContact()" class="contactButton">
@@ -73,6 +79,9 @@ function renderContactSection(){
                 <div id="userProfile" class="userProfile">
                 </div>
             </div>
+            <button id="menuContactButtonMobile" onclick="editSlider()" class="contactButtonMobile">
+                <img src="/assets/img/menu_btn.png" alt="menu-dots">
+            </button>
         </div>  
     `
 }
@@ -130,23 +139,6 @@ function renderEditPopUp(){
 }
 
 
-//Renders the add contact button for mobile devices.
-function renderAddContactButtonMobile(){
-    return/*html*/`
-        <div id="mobile-add-btn">
-            <div id="arrowContact" onclick="removeZindex()" class="arrowContact d-none"><a href=""><img
-                        src="/assets/img/arrow-left.png" alt=""></a></div>
-            <button id="contactButtonMobile" onclick="openPopUpAddContact()" class="contactButtonMobile">
-                <img src="/assets/img/person_add.png" alt="">
-            </button>
-            <button id="menuContactButtonMobile" onclick="removeDNone()" class="contactButtonMobile d-none">
-                <img src="/assets/img/menu_btn.png" alt="">
-            </button>
-        </div>        
-    `
-}
-
-
 /**
  * Opens the contact you clicked on from the register.
  * 
@@ -164,21 +156,31 @@ function openProfile(id) {
     let e = user[0];
     userProfile.innerHTML = "";
   
-    userProfile.innerHTML = `<div>
+    userProfile.innerHTML = `
+    <a id="help-arrow" href="#" onclick="takeSlider()"><img src="/assets/img/arrow-left.png" alt=""></a>
+    <div>
       <div class="topProfile">
-          <div class="profile-initials-pseudo-img" style="background-color:${e.color}">
+          <div class="profile-initials-pseudo-img " style="background-color:${e.color}">
              ${e.initials}
           </div>
-      <div class="nameProfile"><h2 class="h2">${e.fullName}</h2><div class="buttonsPopUp"><Button onclick="editProfile(${e.id})" class="buttonPopUp"><img src="/assets/img/edit.png" alt=""> Edit</Button><Button onclick="deleteContact(${e.id})" class="buttonPopUp"><img src="/assets/img/delete.png" alt=""> Delete</Button></div></div>
+      <div class="nameProfile">
+        <h2 class="h2">${e.fullName}</h2>
+            <div class="buttonsPopUp">
+                <Button onclick="editProfile(${e.id})" class="buttonPopUp">
+                <img src="/assets/img/edit.png" alt=""> Edit</Button>
+                <Button onclick="deleteContact(${e.id})" class="buttonPopUp">
+                <img src="/assets/img/delete.png" alt=""> Delete</Button>
+            </div>
+        </div>
       </div>
       <p class="pProfile">Contact Information</p>
       <p><b>Email</b></p>
-      <a class="profileLink" href="">${e.email}</a>
+      <a class="profileLink" href="#" onclick="return false;">${e.email}</a>
       <p class="pMail"><b>Phone</b></p>
       <p>${e.phoneNumber}</p>
-    </div>
-    <div id="buttonsPopUpMobile" class="buttonsPopUpMobile d-none"><Button onclick="editProfile(${e.id}); addDNone();" class="buttonPopUpMobile"><img src="/assets/img/edit.png" alt=""> Edit</Button><Button onclick="deleteContact(${e.id}); addDNone();" class="buttonPopUpMobile"><img src="/assets/img/delete.png" alt=""> Delete</Button></div>`;
-  }
+    </div>`;
+  addSlider();
+  configureMobileEdit();}
   
 
   /**
@@ -187,15 +189,13 @@ function openProfile(id) {
  * @param {string} letter - These are the letters from A to Z.
  */
 function renderContacts(letter) {
-    debugger
     let container = document.getElementById(`${letter}`);
     container.innerHTML = "";
     for (let i = 0; i < contacts.length; i++) {
       let contact = contacts[i];
       if (letter === contact.initials.charAt(0)) {
         container.innerHTML += `
-          <div id="${contact.name}${i}" onclick="openProfile('${contact.id}'); contactActive('${contact.name}${i}');  setZindex();" class="contact">
-          
+          <div id="${contact.name}${i}" onclick="openProfile('${contact.id}'); contactActive('${contact.name}${i}')" class="contact">
           <div>
               <span id="${contact.id}" class="initials">${contact.initials}</span>
           </div>
@@ -215,10 +215,12 @@ function renderContacts(letter) {
  * 
  */
 function renderRegister() {
+    let letterCheck = contacts.map(element => element.fullName.charAt(0).toUpperCase());
     let register = document.getElementById("register");
     register.innerHTML = "";
     for (let i = 0; i < letters.length; i++) {
       const letter = letters[i];
+      if(letterCheck.includes(letter)){
       register.innerHTML += `
         <div class="register">
           <span>${letter}</span>
@@ -229,8 +231,9 @@ function renderRegister() {
         </div>
         <div id="${letter}" class="test">
         </div>
-      `;
-      renderContacts(`${letter}`);
+        `;
+        renderContacts(`${letter}`);
+    }
     }
   }
   

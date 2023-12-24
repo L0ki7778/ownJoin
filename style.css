@@ -1,92 +1,264 @@
 :root {
     --blue: #29ABE2;
     --outline-active: #74C5E8;
-    --outline-error:#FF6073;
+    --outline-error: #FF6073;
     font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
 }
 
 body {
-    margin: 0 auto!important;
-    font-family: 'Inter', sans-serif!important;
-    font-size: 16px;
-    background-color: #F6F7F8!important;
+    margin: 0 auto !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1rem;
+    background-color: #F6F7F8 !important;
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* overflow-y: hidden; */
 }
 
-.d-none{
-    display: none!important;
+#main {
+    position: absolute;
+    left: 14rem;
+    width: calc(100% - 14rem);
+    top: 7rem;
+    height: 89vh;
 }
 
-#german>h1{
-    font-size: 64px;
+.d-none {
+    display: none !important;
+}
+
+#german>h1 {
+    font-size: 4rem;
     font-weight: 700;
 }
 
-#german>h2{
-    font-size: 27px;
+#german>h2 {
+    font-size: 1.6875rem;
     font-weight: 700;
 }
 
-#german{
-    padding: 5%;
-    padding-top:0;
+#german {
     position: relative;
-    left: 14%;
-    max-width: 1240px;
-    width: 76%;
+    left: 3rem;
+    width: calc(100% - 8rem);
+    margin-bottom: 3rem;
 }
 
-#english>h1{
-    font-size: 64px;
+#english>h1 {
+    font-size: 4rem;
     font-weight: 700;
 }
 
-#english>h2{
-    font-size: 27px;
+#english>h2 {
+    font-size: 1.6875rem;
     font-weight: 700;
 }
 
-#english{
-    padding: 5%;
-    padding-top:0;
+#english {
     position: relative;
-    left: 14%;
-    width: 76%;
-    max-width: 1240px;
+    left: 3rem;
+    width: calc(100% - 8rem);
+    margin-bottom: 3rem;
 }
 
-.arrow{
+.arrow {
     position: relative;
 }
 
-.arrow>a{
+.arrow>a {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     margin: auto;
-    height: 46px;
-    width: 39px;
+    height: 2.875rem;
+    width: 2.4375rem;
 }
 
-.arrow>a>img{
+.arrow>a>img {
     position: absolute;
-    height: 40px;
-    width: 39px;
+    height: 2.5rem;
+    width: 2.4375rem;
     inset: 0;
     margin: auto;
 }
 
-.scroll-help{
-    padding: 5%;
-    padding-top:0;
+.scroll-help {
     position: relative;
-    left: 14%;
-    width: 76%;
-    max-width: 1240px;
+    left: 3rem;
+    width: calc(100% - 8rem);
+    margin-bottom: 3rem;
 }
 
+@media screen and (max-width: 5500px) {
+    :root {
+        font-size: 48px;
+    }
+
+}
+
+@media screen and (max-width: 4500px) {
+    :root {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 3900px) {
+    :root {
+        font-size: 32px;
+    }
+}
+
+@media screen and (max-width: 3000px) {
+    :root {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 2650px) {
+    :root {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 2280px) {
+    :root {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 1920px) {
+    :root {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 1370px) {
+    :root {
+        font-size: 13px;
+    }
+}
+
+
+@media screen and (max-width: 1080px) {
+    :root {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    :root {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 960px) {
+
+    :root {
+        font-size: 14px;
+    }
+
+    .scroll-help {
+        position: relative;
+        left: 1rem;
+        width: 100%;
+        top: 5rem;
+        /* bottom: 5rem; */
+        margin-bottom: 3rem;
+        height: calc(100vh - 15rem);
+        padding: 2rem 1rem;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        &::-webkit-scrollbar {
+        width: .625rem;
+        margin-top: 1.25rem
+    }
+
+    &::-webkit-scrollbar-track {
+        background: white;
+        border-radius: .9375rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: .9375rem;
+    }
+    }
+
+    #main {
+        left: 0;
+        width: 95%;
+        position: absolute;
+        top: 3rem;
+        height: calc(100vh - 14rem);
+        &::-webkit-scrollbar {
+        width: .625rem;
+        margin-top: 1.25rem
+    }
+
+    &::-webkit-scrollbar-track {
+        background: white;
+        border-radius: .9375rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: .9375rem;
+    }
+    }
+
+    #english,
+    #german {
+        position: relative;
+        left: 1rem;
+        width: 100%;
+        top: 5rem;
+        /* bottom: 5rem; */
+        margin-bottom: 3rem;
+        height: calc(100vh - 15rem);
+        padding: 2rem 1rem;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        &::-webkit-scrollbar {
+        width: .625rem;
+        margin-top: 1.25rem
+    }
+
+    &::-webkit-scrollbar-track {
+        background: white;
+        border-radius: .9375rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: .9375rem;
+    }
+    }
+}
+
+@media screen and (max-width: 545px) {
+    :root {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 455px) {
+    :root {
+        font-size: 10px;
+    }
+
+}
+
+@media screen and (max-width: 355px) {
+    :root {
+        font-size: 9px;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+    :root {
+        font-size: 8px;
+    }
+}

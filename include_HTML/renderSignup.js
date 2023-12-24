@@ -113,7 +113,7 @@ function renderLogin() {
                     <button id="login-btn" class="btn" disabled="true" onclick="logIn()">
                         Log in
                     </button>
-                    <button id="guest-login-btn" class="btn">
+                    <button id="guest-login-btn" class="btn" onclick="guestLogIn()">
                         Guest Log in
                     </button>
                 </div>

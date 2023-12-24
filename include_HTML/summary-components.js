@@ -15,7 +15,7 @@ function renderHeadline() {
 // Generates a grid container HTML element.
 function gridContainer() {
     return /*html*/`
-    <div class="d-flex row">  
+    <div id="sum-headline">  
         <h1>Join 360</h1>
         <div class="stroke"></div>
         <h3>Key Metrics at a Glance</h3>              
@@ -23,11 +23,11 @@ function gridContainer() {
     <div id="grid">  
         <div id=grid-main-container>
             <div class="grid-container1">
-                <div id="To-Do" onclick="openBoard()" class="grid-item"><img src="/assets/img/pen-frame.png" alt=""><div class="auxilary-container"><h1>${toDo.length}</h1><span>To do</span></div></div>
-                <div id="Done" onclick="openBoard()" class="grid-item"><img src="/assets/img/checkmark-frame.png" alt=""><div class="auxilary-container"><h1>${done.length}</h1> <span>Done</span></div></div>
+                <div id="To-Do" onclick="openBoard()" class="grid-item"><img class="summary-icon" src="/assets/img/pen-frame.png" alt=""><div class="auxilary-container"><h1>${toDo.length}</h1><span>To do</span></div></div>
+                <div id="Done" onclick="openBoard()" class="grid-item"><img class="summary-icon" src="/assets/img/checkmark-frame.png" alt=""><div class="auxilary-container"><h1>${done.length}</h1> <span>Done</span></div></div>
             </div>
             <div class="grid-container2">
-                <div id="urgent" onclick="openBoard()" class="grid-item"><div class="displayFlex"><img src="/assets/img/arrow-up.png" alt="">
+                <div id="urgent" onclick="openBoard()" class="grid-item"><div class="displayFlex"><img class="priority-icon" src="/assets/img/arrow-up.png" alt="">
                     <div class="auxilary-container">
                         <h1>${urgent.length}</h1><span>Urgent</span>                
                     </div>

@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contacts</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="shortcut icon" type="image/x-icon" href="/assets/img/join-logo.png">
   <link rel="stylesheet" href="/css/add_task.css">
   <link rel="stylesheet" href="/css/nav-header.css">
   <link rel="stylesheet" href="/css/contacts.css">
   <link rel="stylesheet" href="/css/fonts.css">
   <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/css/mediaQ.css">
   <script src="/script.js"></script>
   <script src="/js/add_contact.js"></script>
   <script src="/js/edit_task.js"></script>
@@ -24,6 +25,11 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body onload="init()">
+  <div id="mobile-add-btn">
+    <button id="contactButtonMobile" onclick="openPopUpAddContact()" class="contactButtonMobile">
+      <img src="/assets/img/person_add.png" alt="">
+    </button>
+  </div>
   <header></header>
   <nav></nav>
   <main>

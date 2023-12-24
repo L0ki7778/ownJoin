@@ -5,7 +5,7 @@
 function renderPrivacyPolicy() {
   return /*html*/ `
    <div id="german" class="d-none">
-       <div class=arrow><h1 class="titleH1">Datenschutzerklärung</h1><a id="help-arrow" href="/html/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
+       <div class=arrow><h1 class="titleH1">Datenschutzerklärung</h1><a class="help-arrow" href="/html/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
 
        <p>Verantwortlicher im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO),
             ist:
@@ -249,7 +249,7 @@ function renderPrivacyPolicy() {
     </div>
 
     <div id="english" >
-        <div class=arrow><h1 class="titleH1">Privacy Policy</h1><a id="help-arrow" href="/html/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
+        <div class=arrow><h1 class="titleH1">Privacy Policy</h1><a class="help-arrow" href="/html/summary.html"><img src="/assets/img/arrow-left.png" alt=""></a></div>
         <p>Controller for the purposes of data protection laws, in particular the EU General Data Protection Regulation
             (GDPR),
             is:

@@ -22,8 +22,6 @@ async function init() {
   renderContactPage(activeUser);
   renderRegister();
   navActive(3);
-  hideUnusedLetters();
-  calcBarHeight();
   addContactFormListener();
   addContactEditListener();
 }
@@ -43,35 +41,12 @@ function renderContactPage(activeUser) {
   nav.innerHTML = renderNavBar();
   header.innerHTML = renderHeader(activeUser);
   section.innerHTML = renderContactSection();
-  main.innerHTML += renderAddContactButtonMobile();
+  // main.innerHTML += renderAddContactButtonMobile();
   clearHTML();
   body.innerHTML += renderContactPopUp();
   body.innerHTML += renderEditPopUp();
 
 }
-
-
-/**
- * Hides the unused letters in the register where there are no contacts.
- * 
- */
-function hideUnusedLetters() {
-  let divElements = document.querySelectorAll(".test");
-  let divRegister = document.querySelectorAll(".register");
-  let divLine = document.querySelectorAll(".registerLineDiv");
-  divElements.forEach((element, index) => {
-    if (element.innerHTML.trim() === "") {
-      divRegister[index].classList.add("d-none");
-      divLine[index].classList.add("d-none");
-    } else {
-      divRegister[index].classList.remove("d-none");
-      divLine[index].classList.remove("d-none");
-    }
-  });
-}
-
-
-
 
 
 /**
@@ -95,7 +70,70 @@ function editContact(contactId) {
 
 
 
+/**
+ * Slides the Screen to the right to make a contacts-profile visible
+ *
+ * @param {type} None
+ * @return {type} None
+ */
+function addSlider(){
+  let section = document.getElementById("zIndex");
+  let register = document.getElementById("contacts-bar");
+  document.getElementById('contactButtonMobile').classList.add('d-none');
+  register.classList.contains("slide-back") ? register.classList.remove("slide-back") : register.classList.add("slider");
+  register.classList.add("slider");
+  section.classList.contains("slide-out") ? section.classList.remove("slide-out") : section.classList.add("slider");
+  section.classList.add("slider");
+}
 
+
+
+/**
+ * Slides the Screen to the right to make the register visible again. 
+ *
+ */
+function takeSlider(){
+  let section = document.getElementById("zIndex");
+  let register = document.getElementById("contacts-bar");
+  document.getElementById('contactButtonMobile').classList.remove('d-none');
+  register.classList.remove("slider");
+  register.classList.add("slide-back");
+  section.classList.remove("slider");
+  section.classList.add("slide-out");
+  closeEditSlider();
+}
+
+
+/**
+ * Edits the slider.
+ *
+ * @param {none} none - This function does not take any parameters.
+ * @return {none} none - This function does not return any value.
+ */
+function editSlider(){
+  let edit = document.getElementById("mobile-edit-container");
+  edit.classList.add("edit-slide-in");
+}
+
+
+function closeEditSlider(){
+  console.log("edit")
+  let edit = document.getElementById("mobile-edit-container");
+  if(edit.classList.contains("edit-slide-in")){
+    edit.classList.remove("edit-slide-in");
+    edit.classList.add("edit-slide-out");
+  }
+}
+
+function configureMobileEdit(){
+  let buttons = document.getElementsByClassName('buttonPopUp');
+  let editButtons = document.getElementsByClassName('mobile-edit');
+  for(let i=0;i<buttons.length;i++){
+   let btn = buttons[i].getAttribute('onclick')
+   let edit = editButtons[i]
+   edit.setAttribute('onclick',btn)
+  }
+}
 
 
 /**
@@ -128,6 +166,7 @@ function openPopUpEditContact() {
  */
 function closePopUpEditContact() {
   document.getElementById("editContactPopUp").classList.add("d-none");
+  closeEditSlider()
 }
 
 
@@ -216,7 +255,6 @@ async function contactCreation(contact){
     await setContacts(contactKey, contacts);
     closePopUpAddContact();
     renderRegister();
-    hideUnusedLetters();
     clearContactInputs();
     return closePopUpEditContact();
 }
@@ -266,30 +304,6 @@ function newContactObject(nameObj,initials){
 function getRandomColor(id, color) {
   let divName = document.getElementById(id);
   divName.style.backgroundColor = color;
-}
-
-
-/**
- * Calculates the barheight of the contact scroll div.
- */
-function calcBarHeight() {
-  let header = document.querySelector("header");
-  let item = document.getElementById("contacts-bar");
-  let height = window.innerHeight - header.offsetHeight;
-  item.style.height = height + "px";
-  calcHeight();
-}
-
-
-/**
- * Calculates the height of the add new contact popup.
- */
-function calcHeight() {
-  let header = document.querySelector("header");
-  let btn = document.getElementById("addNewContact");
-  let register = document.getElementById("register");
-  let height = window.innerHeight - header.offsetHeight - btn.offsetHeight;
-  register.style.height = height - 20 + "px";
 }
 
 
@@ -348,84 +362,16 @@ function contactActive(id) {
 
 
 /**
- * Swappes the mobile Buttons of the mobile contact page.
- */
-function setZindex() {
-  let div = document.getElementById('zIndex');
-  div.classList.add('zIndex');
-  let arrow = document.getElementById('arrowContact');
-  arrow.classList.remove('d-none');
-  let button = document.getElementById('contactButtonMobile');
-  button.classList.add('d-none');
-  let menu = document.getElementById('menuContactButtonMobile');
-  menu.classList.remove('d-none');
-}
-
-
-/**
- * Swappes the mobile Buttons of the mobile contact page the otherway around.
- */
-function removeZindex() {
-  let div = document.getElementById('zIndex');
-  div.classList.remove('zIndex');
-  let arrow = document.getElementById('arrowContact');
-  arrow.classList.add('d-none');
-  let menu = document.getElementById('menuContactButtonMobile');
-  menu.classList.add('d-none');
-  let button = document.getElementById('contactButtonMobile');
-  button.classList.remove('d-none');
-}
-
-
-/**
- * Adds d-none to two buttons.
- */
-function removeDNone() {
-  let button = document.getElementById('buttonsPopUpMobile');
-  button.classList.remove('d-none');
-  let menu = document.getElementById('menuContactButtonMobile');
-  menu.classList.add('d-none');
-}
-
-
-/**
- * Removes d-none of two buttons.
- */
-function addDNone() {
-  let button = document.getElementById('buttonsPopUpMobile');
-  button.classList.add('d-none');
-  let menu = document.getElementById('menuContactButtonMobile');
-  menu.classList.remove('d-none');
-}
-
-
-/**
  * Clears the HTML of the inputfields in the edit contact popup.
  */
 function clearHTML() {
   if (document.getElementById('editContactPopUp') !== null) {
-    let mobileBtn = document.getElementById('mobile-add-btn');
+    // let mobileBtn = document.getElementById('mobile-add-btn');
     let popup = document.getElementById('editContactPopUp');
     let popUpTwo = document.getElementById('addContactPopUp');
-    mobileBtn.parentNode.removeChild(mobileBtn);
+    // mobileBtn.parentNode.removeChild(mobileBtn);
     popup.parentNode.removeChild(popup);
     popUpTwo.parentNode.removeChild(popUpTwo);
   }
 }
-
-document.addEventListener('click', function(event) {
-  let zIndexDiv = document.getElementById('zIndex');
-  let buttonsPopUpMobile = document.getElementById('buttonsPopUpMobile');
-
-  // Überprüfen, ob das geklickte Element die DIV mit der ID "zIndex" ist
-  if (event.target === zIndexDiv) {
-      // Überprüfen, ob die Klasse "d-none" noch nicht zugewiesen ist
-      if (!buttonsPopUpMobile.classList.contains('d-none')) {
-          // Füge die Klasse "d-none" hinzu
-          buttonsPopUpMobile.classList.add('d-none');
-          let menu = document.getElementById('menuContactButtonMobile');
-          menu.classList.remove('d-none');
-      }
-  }
-});
 

@@ -15,12 +15,12 @@ main {
     align-items: unset;
 }
 
-#assign-list li:hover{
-        background-color: rgba(0, 0, 0, 0.08);
+#assign-list li:hover {
+    background-color: rgba(0, 0, 0, 0.08);
 }
 
-#assign-list li{
-    width: 95%;
+#assign-list li {
+    width: 98%
 }
 
 .cloumn {
@@ -41,26 +41,26 @@ main {
     padding: 0.5rem;
 
     &::-webkit-scrollbar {
-        width: 10px;
-        margin-top: 20px
+        width: .625rem;
+        margin-top: 1.25rem
     }
 
     &::-webkit-scrollbar-track {
         background: white;
-        border-radius: 15px;
+        border-radius: .9375rem;
     }
 
     &::-webkit-scrollbar-thumb {
         background: #888;
-        border-radius: 15px;
+        border-radius: .9375rem;
     }
 }
 
 .drag-area {
     position: relative;
     background-color: #E7E7E7;
-    border: 2px dashed #B8B8B8;
-    border-radius: 15px;
+    border: .125rem dashed #B8B8B8;
+    border-radius: .9375rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,11 +78,11 @@ main {
 
 .todo {
     background-color: white;
-    border-radius: 30px;
-    padding: 15px 20px;
+    border-radius: 1.875rem;
+    padding: .9375rem 1.25rem;
     margin: 0 0 1rem;
     width: 100%;
-    box-shadow: 0px 0px 8px 0px rgb(0, 0, 0, 0.2);
+    box-shadow: 0px 0px .5rem 0px rgb(0, 0, 0, 0.2);
     word-break: break-all;
     clip-path: margin-box;
 }
@@ -107,7 +107,7 @@ main {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding-bottom: 99px;
+    padding-bottom: 6.1875rem;
 }
 
 .buttonAdd {
@@ -123,11 +123,12 @@ main {
     padding: 1rem;
     background-color: #2A3647;
     color: white;
-    border-radius: 10px;
+    border-radius: .625rem;
     font-size: 1.3rem;
     font-weight: 700;
     transition: box-shadow 0.1s ease;
 }
+
 .buttonAddMobile {
     position: absolute;
     top: 0;
@@ -141,7 +142,7 @@ main {
     padding: 1rem;
     background-color: #2A3647;
     color: white;
-    border-radius: 10px;
+    border-radius: .625rem;
     font-size: 1.3rem;
     font-weight: 700;
     transition: box-shadow 0.1s ease;
@@ -167,8 +168,13 @@ main {
     margin: auto;
 }
 
+#search-btn>img {
+    height: 1.125rem;
+    width: 1.125rem;
+}
+
 #find-task-container>.input-border {
-    width: 1px;
+    width: .0625rem;
     padding: 0;
     height: 2rem;
     margin-right: 1rem;
@@ -191,7 +197,7 @@ main {
 .buttonAdd:hover {
     cursor: pointer;
     background-color: #29ABE2;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px .25rem .25rem 0px rgba(0, 0, 0, 0.2);
 }
 
 .buttonAdd img {
@@ -200,32 +206,32 @@ main {
 
 h1 {
     display: block;
-    font-size: 61px;
+    font-size: 3.8125rem;
     font-weight: 700;
 }
 
 
 .user-story {
     background-color: #0038FF;
-    padding: 5px 20px;
+    padding: .3125rem 1.25rem;
     color: white;
-    border-radius: 10px;
-    width: 135px;
+    border-radius: .625rem;
+    width: 2.1875rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .technical-task {
     background-color: #1FD7C1;
-    padding: 5px 20px;
+    padding: .3125rem 1.25rem;
     color: white;
-    border-radius: 10px;
-    width: 155px;
+    border-radius: .625rem;
+    width: 9.6875rem;
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .categoryBoardPopUp {
@@ -245,11 +251,11 @@ h1 {
 
 }
 
-.descriptionBoardPopUp>span{
+.descriptionBoardPopUp>span {
     width: 8rem;
 }
 
-.descriptionBoardPopUp>img{
+.descriptionBoardPopUp>img {
     height: .6rem;
     align-self: center;
     margin-left: .5rem;
@@ -260,8 +266,8 @@ h1 {
 }
 
 .progress {
-    height: 8px !important;
-    border-radius: 15px !important;
+    height: .5rem !important;
+    border-radius: .9375rem !important;
     width: 40%;
 }
 
@@ -269,12 +275,16 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 200px;
+    width: 12.5rem;
 }
 
 .subtask-content {
     display: flex;
     flex-direction: row;
+}
+
+#task-container {
+    position: static;
 }
 
 h5 {
@@ -287,7 +297,7 @@ h5 {
     justify-content: space-around;
     align-items: center;
     align-content: flex-start;
-    min-width: 64px;
+    min-width: 4rem;
     height: auto;
 }
 
@@ -318,10 +328,11 @@ h5 {
     display: flex;
     background-color: white;
     inset: 0;
-    margin: 3rem auto;
+    margin: auto;
+    height: 55rem;
     padding: 0 5.5em;
     width: 80%;
-    border-radius: 30px;
+    border-radius: 1.875rem;
     flex-direction: column;
     transform: translateX(75rem);
     animation: slide-in 0.15s ease-in-out forwards;
@@ -359,27 +370,31 @@ h5 {
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    height: 90%;
+    height: 45rem;
     overflow-y: auto;
 
     &::-webkit-scrollbar {
-        width: 10px;
+        width: .625rem;
         height: 20rem;
-        margin-top: 20px
+        margin-top: 1.25rem
     }
 
 
     &::-webkit-scrollbar-track {
-        border-radius: 35px;
-        margin-block: 50px;
+        border-radius: 2.1875rem;
+        margin-block: 3.125rem;
     }
 
     &::-webkit-scrollbar-thumb {
         background: #b9b7b7;
-        border-radius: 15px;
-        border-top: 50px green;
+        border-radius: .9375rem;
+        border-top: 3.125rem green;
 
     }
+}
+
+.edit-sections>div>#prio {
+    width: 23rem;
 }
 
 .edit-bottom-section {
@@ -405,6 +420,10 @@ h5 {
     width: 7rem !important;
 }
 
+.prioriy-container>img {
+    width: 1.3125rem
+}
+
 
 
 .left-section,
@@ -418,31 +437,31 @@ h5 {
 
 
 h6:not(:first-of-type):not(:nth-of-type(4)) {
-    margin: 2em 0 0.5em !important;
+    margin: 1rem 0 0.5rem !important;
 }
 
 #header-six {
-    margin: 3em 0 0.5em !important;
+    margin: 1.5rem 0 0.5rem !important;
 }
 
 #required-text {
-    font-size: .8em !important;
+    font-size: .8rem !important;
     margin: 0;
     align-self: flex-end !important;
 }
 
 
 .add-task-bottom-section {
-    width: 85% !important;
     position: absolute;
     margin: auto;
-    bottom: 10%;
-    left: 5%;
-    right: 5%;
+    bottom: 3rem;
+    width: 90%;
+    left: 0;
+    right: 0;
 }
 
 .border {
-    margin: 0 2.5em
+    margin: 0 2.5rem
 }
 
 .edit-border {
@@ -450,7 +469,7 @@ h6:not(:first-of-type):not(:nth-of-type(4)) {
 }
 
 .row {
-    padding: 2px !important
+    padding: .125rem !important
 }
 
 .clearButton {
@@ -460,10 +479,10 @@ h6:not(:first-of-type):not(:nth-of-type(4)) {
 #close-pop-up {
     position: absolute;
     display: flex;
-    right: 2em;
-    top: 3.3em;
-    height: 2em;
-    padding: 9px;
+    right: 1rem;
+    top: 1.3rem;
+    height: 2rem;
+    padding: .5625rem;
     border-radius: 50%;
     z-index: 2;
 
@@ -557,7 +576,7 @@ h6 :hover {
 #pop-headline {
     font-size: 3rem;
     margin-bottom: 1.5rem;
-  
+
 }
 
 ul {
@@ -577,7 +596,7 @@ ul {
     overflow-y: auto !important;
 }
 
-#assignement{
+#assignement {
     height: auto;
     overflow: scroll !important;
 }
@@ -598,12 +617,12 @@ ul {
 
 #subtask-list {
     margin: 1rem 0 !important;
-    width: 90%!important;
-    max-height: none!important;
+    width: 90% !important;
+    max-height: none !important;
 }
 
-#subtask-list>li{
-    margin-block:0;
+#subtask-list>li {
+    margin-block: 0;
 }
 
 #single-todo {
@@ -614,19 +633,19 @@ ul {
     ;
 
     &::-webkit-scrollbar {
-        width: 10px;
-        margin-top: 20px;
+        width: .625rem;
+        margin-top: 1.25rem;
     }
 
     &::-webkit-scrollbar-track {
         background: white;
-        border-radius: 35px;
-        margin-block:2rem
+        border-radius: 2.1875rem;
+        margin-block: 2rem
     }
 
     &::-webkit-scrollbar-thumb {
         background: #888;
-        border-radius: 15px;
+        border-radius: .9375rem;
     }
 }
 
@@ -649,13 +668,17 @@ ul {
     }
 }
 
+#todo-edit-footer>button>img {
+    height: 1.5rem;
+}
+
 .sub-task-board {
     margin: 0 0 0 -1rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 2rem;
-    gap:1rem
+    gap: 1rem
 }
 
 .sub-cb-auxiliary {
@@ -664,52 +687,222 @@ ul {
     justify-content: center
 }
 
-.sub-text{
+.sub-text {
     width: 19rem;
     display: flex;
     justify-content: flex-start;
     font-size: 0.8rem
 }
 
-.sub-checkbox{
+.sub-checkbox {
     height: 1.2rem;
 }
 
-#title-requirement-edit{
+.title {
+    margin-bottom: 2rem;
+}
+
+#title-requirement-edit {
     position: relative;
     margin: -0 0 -1.2rem .5rem;
     color: red;
     font-size: .8rem;
 }
 
-#description-requirement-edit{
+#description-requirement-edit {
     position: relative;
     margin: -0 0 -1.2rem .5rem;
     color: red;
     font-size: .8rem;
 }
 
-#date-requirement-edit{
+#date-requirement-edit {
     position: relative;
     margin: -0 0 -1.2rem .5rem;
     color: red;
     font-size: .8rem;
 }
 
-.profile-checkboxes-edit{
+.profile-checkboxes-edit {
     position: absolute;
     right: 1rem;
 }
+
 .single-subtask:hover {
-    cursor: url(/assets/img/edit.png), auto;
+    cursor: url('/assets/img/edit.png')16 16, auto;
 }
 
 
-.no-tasks{
+.no-tasks {
     position: absolute;
     width: 100%;
     text-align: center;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+.moveButtons {
+    width: 15rem;
+    display: flex;
+    background-color: white;
+    justify-content: flex-start !important;
+    align-items: start !important;
+    flex-direction: column;
+    box-shadow: 0rem 1rem 2rem 0rem rgba(0, 0, 0, 0.2);
+    padding: 0.25rem;
+    padding-bottom: 2rem;
+    border-radius: 1rem 1rem 0rem 1rem;
+    gap: .5rem;
+}
+
+.moveButtons button {
+    border: unset;
+    background-color: white;
+}
+
+.moveButtons button:hover {
+    color: #29ABE2;
+}
+
+#openMoveTaskMenu{
+    display: none;
+}
+
+.closeMoveTaskMenu {
+    position: relative;
+    top: 0.5rem;
+    right: -11rem;
+}
+
+.moveTaskButton{
+    font-size: 1.2rem;
+    font-weight: 500;
+    width: 100%;
+    text-align: start;
+    border-bottom: 1px solid #29ABE2!important;
+}
+.moveTaskButton:last-child{
+    border-bottom: unset!important;
+}
+
+@media screen and (max-width: 960px) {
+    main {
+        position: static;
+        width: unset;
+        padding-left: unset;
+        padding-top: 2rem
+    }
+
+    #openMoveTaskMenu{
+        display: block;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    #content-box {
+        height: 37rem;
+    }
+
+    .drag-area {
+        flex-direction: row;
+        gap: 1rem
+    }
+
+    .buttonAddMobile {
+        display: flex;
+        padding-left: 0.5rem;
+    }
+
+    .headline {
+        position: relative;
+        left: 0;
+        padding: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        background-color: #f8f9fa;
+        gap: 1rem;
+        z-index: 12;
+        top: -2rem;
+        height: 12rem;
+        margin-top: 0rem;
+        margin-bottom: 0;
+    }
+
+    .buttonAddMobile {
+        position: absolute;
+        top: 1.5rem;
+        right: 2rem;
+        margin: 0;
+    }
+
+    .buttonAdd {
+        display: none;
+    }
+
+    #find-task-container {
+        left: 1rem;
+        width: unset !important;
+        margin: auto 0;
+        bottom: -8rem;
+        right: 2rem;
+    }
+
+    .headline>h1 {
+        position: absolute;
+        top: 1rem
+    }
+
+    .drag-headlines {
+        width: unset;
+
+    }
+
+    .drag-area {
+        overflow: scroll;
+        min-height: 5rem;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .todo {
+        height: 14rem;
+        width: 15rem;
+    }
+
+    .drag-area>div>.todo-content {
+        height: 2rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    #single-todo {
+        width: 93%;
+        height: 92%;
+        overflow-y: scroll !important;
+
+        &::-webkit-scrollbar {
+            display: none !important;
+        }
+    }
+
+    #close-pop-up >img{
+        width: 1.4rem;
+        height: 1.5rem;
+    }
+
+    #close-pop-up {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
 }

@@ -10,15 +10,9 @@ function renderHeader(user) {
             <div id="profile-icon" onclick="openMenu()">${user[0].initials}</div>
         </div>
         <div id="header-icon-menu" class="d-none">
-            <a class="menu-option" href="/html/legal_notice.html">
-                Legal Notice
-            </a>
-            <a class="menu-option" href="/html/privacy_policy.html">
-                Privacy Policy
-            </a>
-            <a class="menu-option" href="#" onclick="logOut()">
-                Log out
-            </a>
+            <div class="menu-link"><a class="menu-option" href="/html/legal_notice.html">Legal Notice</a></div>
+            <div class="menu-link"><a class="menu-option" href="/html/privacy_policy.html">Privacy Policy</a></div>
+            <div class="menu-link"><a class="menu-option" href="#" onclick="logOut()">Log out</a></div>
         </div>
 
 

@@ -7,7 +7,7 @@ function renderComponents(activeUser) {
     header.innerHTML += renderHeader(activeUser);
     main.innerHTML =/*html*/`
 <div id="info">
-    <div id="info-text">Task added to board</div><img src="/assets/img/nav-board.png" id="error" alt="">
+    <div id="info-text">Task added to board</div><img src="/assets/img/board.png" id="error" alt="">
 </div>
 <div class="column">
     <div class="sections-drag">
@@ -184,6 +184,14 @@ function renderSingleTodo(id) {
             </ul>
         </div>
         <div id="todo-edit-footer">
+            <div id="moveButtons" class="moveButtons d-none">
+            <button class="closeMoveTaskMenu" onclick="closeMoveTaskMenu()"><img src="/assets/img/cross.png" alt=""></button>
+            <button onclick="moveTaskToToDo('${index}')" class="moveTaskButton" > To-Do</button>
+            <button onclick="moveTaskToInProgress('${index}')" class="moveTaskButton" > In-Progress</button>
+            <button onclick="moveTaskToFeedback('${index}')" class="moveTaskButton" > Await-Feedback</button>
+            <button onclick="moveTaskToDone('${index}')"class="moveTaskButton" > Done</button>
+            </div>
+            <button id="openMoveTaskMenu" onclick="openMoveTaskMenu()"><img src="/assets/img/arrow-down.png" alt=""> Move task to</button>
             <button onclick="deleteTask('${id}')" id="delete-todo"><img src="/assets/img/delete.png" alt=""> Delete</button>
             <button onclick="lookForSubChange(),startEdit()"><img src="/assets/img/edit.png" alt=""> Edit</button>
         </div>

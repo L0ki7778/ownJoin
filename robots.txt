@@ -2,7 +2,7 @@
 
 User-agent: *
 
-Disallow: /assets/
+Disallow: /html/
 Disallow: /css/
 Disallow: /js/
 Disallow: /render/

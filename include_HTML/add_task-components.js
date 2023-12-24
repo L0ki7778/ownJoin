@@ -152,7 +152,6 @@ function renderAddTaskSections() {
         </div>
     </div>
 </div>
-</div>
 <div class="add-task-bottom-section">
     <h6 id="required-text"><span class="span">*</span>This field is required</h6>
     <div id="submit-btn-container">
@@ -161,6 +160,8 @@ function renderAddTaskSections() {
                 alt="" /></button>
     </div>
 </div>
+</div>
+
 `};
 
 

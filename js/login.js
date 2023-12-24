@@ -212,7 +212,7 @@ function logIn() {
  */
 function guestLogIn() {
   logUser(JSON.stringify(guest))
-  location.replace('/html/summary.html')
+  location.replace('/html/summary.html');
 }
 
 
@@ -268,7 +268,7 @@ function loginCheckBox(box, img){
   } else if (!box.checked) {
     box.checked = true;
     img.src = '/assets/img/checked-box.png';
-    img.style = 'width: 20px; height: 20px;transform:translate(5px,5px);margin-right:12px';
+    img.style = 'width: 1.25rem; height: 1.25rem;transform:translate(.3125rem,.3125rem);margin-right:.9rem';
   }
 }
 
