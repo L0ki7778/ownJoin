@@ -383,10 +383,10 @@ footer>a {
     color: red;
 }
 
-.chatacters{
+.characters{
     position: absolute;
     transform: translate(1.6rem, -2rem);
-    font-size: 1arem;
+    font-size: 1rem;
     color: red;
 }
 
@@ -979,7 +979,11 @@ footer>a {
         padding: 0 1.8rem
     }
 
-    .reminder,.no-match {
+    .reminder {
+        font-size: 1.3rem;
+    }
+
+    .no-match {
         font-size: 1.3rem;
     }
 
