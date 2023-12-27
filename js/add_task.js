@@ -358,6 +358,7 @@ function clearAll() {
   document.getElementById('date').value = "";
   clearCategoryValue();
   validateTitleInput();
+  lock()
 }
 
 

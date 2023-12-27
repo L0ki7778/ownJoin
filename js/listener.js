@@ -1,8 +1,15 @@
-let titleLock=false;
-let descriptionLock=false;
-let dateLock=false;
-let categoryLock=false;
+let titleLock = false;
+let descriptionLock = false;
+let dateLock = false;
+let categoryLock = false;
 
+
+function lock() {
+    titleLock = false;
+    descriptionLock = false;
+    dateLock = false;
+    categoryLock = false;
+}
 
 
 /**
@@ -10,11 +17,11 @@ let categoryLock=false;
  * 
  * @return {void} No return value.
  */
-function checkAllLocks(){
-    if(titleLock && descriptionLock && dateLock && categoryLock){
-       let btn= document.getElementById("createTaskButton") || document.getElementById("edit-ok-btn");
-       btn.disabled=false;
-    }else{
+function checkAllLocks() {
+    if (titleLock && descriptionLock && dateLock && categoryLock) {
+        let btn = document.getElementById("createTaskButton") || document.getElementById("edit-ok-btn");
+        btn.disabled = false;
+    } else {
         return
     }
 }
@@ -77,10 +84,10 @@ function validateTitleInput() {
     if (title.value.length === 0) {
         container.style = "box-shadow: inset 0 0 1px 1px #FF4646!important;";
         message.classList.remove("d-none");
-        titleLock=false;
+        titleLock = false;
         btn.disabled = true;
     } else {
-        titleLock=true;
+        titleLock = true;
         message.classList.add("d-none");
         container.style = "";
         checkAllLocks()
@@ -102,10 +109,10 @@ function validateDescriptionInput() {
     if (description.value.length === 0) {
         container.style = "box-shadow: inset 0 0 1px 1px #FF4646!important;";
         message.classList.remove("d-none");
-        descriptionLock=false;
+        descriptionLock = false;
         btn.disabled = true;
     } else {
-        descriptionLock=true;
+        descriptionLock = true;
         container.style = "";
         message.classList.add("d-none");
         checkAllLocks()
@@ -130,14 +137,14 @@ function validateDateInput() {
         div.style = "box-shadow: inset 0 0 1px 1px #FF4646!important;";
         message.classList.remove("d-none");
         btn.disabled = true;
-        dateLock=false;
+        dateLock = false;
     } else if (selectedDate < currentDate) {
         div.style = "box-shadow: inset 0 0 1px 1px #FF4646!important;";
         message.classList.remove("d-none");
         btn.disabled = true;
-        dateLock=false;
+        dateLock = false;
     } else {
-        dateLock=true;
+        dateLock = true;
         message.classList.add("d-none");
         div.style = "";
         checkAllLocks()
@@ -156,11 +163,11 @@ function categoryResponse() {
     let category = document.getElementById("category");
     let btn = document.getElementById("createTaskButton") || document.getElementById("edit-ok-btn");
     if (category.value == "Technical Task" || category.value == "User Story") {
-        categoryLock=true;
+        categoryLock = true;
         checkAllLocks()
         return true;
     } else {
-        categoryLock=false;
+        categoryLock = false;
         btn.disabled = true;
         return false;
     }
@@ -196,7 +203,7 @@ function handleClick(event) {
         event.target != categoryInput &&
         event.target != btn &&
         event.target != list
-    ) {{ closeList("category-select", "category", "category-ul", "category-icon"); }}
+    ) { { closeList("category-select", "category", "category-ul", "category-icon"); } }
 }
 
 
@@ -229,10 +236,10 @@ function handleClickAssign(event) {
         event.target != assignInput &&
         event.target != btn &&
         event.target != list
-    ) { closeList("assign-select", "assign", "assign-ul", "assign-icon")}
+    ) { closeList("assign-select", "assign", "assign-ul", "assign-icon") }
 }
 
-function removeBodyHandler(){
+function removeBodyHandler() {
     let body = document.querySelector("body");
     body.removeEventListener("click", handleClickAssign);
 }
@@ -300,7 +307,8 @@ function addContactFormListener() {
     fullName.addEventListener("input", () => {
         if (checkForDuplicateName(fullName.value)) {
             fullName.setCustomValidity(doubleName);
-            return true;} else {
+            return true;
+        } else {
             fullName.setCustomValidity("");
         }
     });
