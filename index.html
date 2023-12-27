@@ -46,8 +46,8 @@
                     <div id="password-container" class="login-input-fields">
                         <input class="login-input password" id="login-password" type="password" min="8" required
                             placeholder="Password"
-                            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\-]).{8,}$|(?=[0-9].*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\-]).{8,}$"
-                            title="Bitte verwende mindestens eine Zahl und ein Sonderzeichen.">
+                            pattern="^(?=.*[a-z])(?=.*[A-Z]).{8,}$|^(?=.*[A-Z])(?=.*[a-z]).{8,}$"
+                            title="Please use at least 8 characters with at least one uppercase letter and one lowercase letter">
                         <div class="eye-container"><img class="lock input-img" src="assets/img/lock.png" alt="lock">
                         </div>
                     </div>

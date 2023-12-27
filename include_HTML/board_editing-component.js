@@ -20,12 +20,12 @@ function editCurrentTodo(task) {
         <h6>Assigned to</h6>
         <div class="relative">
             <div id="assign-select" class="input-group sub-container ">
-                <input class="form-control subtask-input contact-assign-select select"
+                <input readonly class="form-control subtask-input contact-assign-select select"
                     onclick="openList('assign-select','assign','assign-ul','assign-icon')"
                     placeholder="Select contacts to assign" id="assign">
-                <button id="assign-icon" class="divIcon"
-                    onclick="openList('assign-select','assign','assign-ul','assign-icon')"><img
-                        src="/assets/img/arrow_drop_down.png" alt=""></button>
+                <button  class="divIcon"
+                    onclick="openList('assign-select','assign','assign-ul','assign-icon')">
+                    <img id="assign-icon" src="/assets/img/arrow_drop_down.png" alt=""></button>
             </div>
             <div id="assign-ul" class="ul-parent d-none">
                 <ul id=assign-list class="drop-down-select-container edit-ul" onclick="event.stopPropagation()">
@@ -84,9 +84,9 @@ function editCurrentTodo(task) {
                 <input class="form-control subtask-input contact-assign-select select" value="${task.category}"
                     placeholder="Select task category" id="category"
                     onclick="openList('category-select','category','category-ul','category-icon')" readonly required>
-                <button id="category-icon" class="divIcon"
+                <button  class="divIcon"
                     onclick="openList('category-select','category','category-ul','category-icon')">
-                    <img src="/assets/img/arrow_drop_down.png" alt="">
+                    <img id="category-icon" src="/assets/img/arrow_drop_down.png" alt="">
                 </button>
             </div>
             <div id="category-ul" class="ul-parent d-none">
@@ -94,14 +94,14 @@ function editCurrentTodo(task) {
                     <li class=add-task-contact>
                         <div class="profile">
                             <div class="name"
-                                onclick="setValue('Technical Task');closeList('category-select','category','category-ul','category-icon');checkAllInputs()">
+                                onclick="setValue('Technical Task');closeList('category-select','category','category-ul','category-icon');checkAllLocks()">
                                 Technical Task</div>
                         </div>
                     </li>
                     <li class=add-task-contact>
                         <div class="profile">
                             <div class="name"
-                                onclick="setValue('User Story');closeList('category-select','category','category-ul','category-icon');checkAllInputs()">
+                                onclick="setValue('User Story');closeList('category-select','category','category-ul','category-icon');checkAllLocks()">
                                 User Story</div>
                         </div>
                     </li>

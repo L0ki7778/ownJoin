@@ -38,10 +38,12 @@ footer {
     position: absolute;
     z-index: 10;
     top: 0;
+    font-size: 2rem;
     width: 38rem;
     display: flex;
-    justify-content: space-around;
-    gap: 12px;
+    border-radius: .725rem;
+    justify-content: space-evenly;
+    gap: .725rem;
     align-items: center;
     font-size: 1.5rem;
     left: 0;
@@ -374,10 +376,17 @@ footer>a {
     border-radius: 10px;
 }
 
-.reminder {
+.no-match {
     position: absolute;
     transform: translate(1.6rem, -2rem);
-    font-size: .8rem;
+    font-size: 1arem;
+    color: red;
+}
+
+.chatacters{
+    position: absolute;
+    transform: translate(1.6rem, -2rem);
+    font-size: 1arem;
     color: red;
 }
 
@@ -747,12 +756,21 @@ footer>a {
         align-items: unset;
     }
 
+    .input-img{
+        width: 2rem;
+        height: 2rem;
+    }
+
     #login-btn {
         position: relative;
         font-size: 1.5rem;
         padding: .5rem 1.5rem;
         align-items: center;
         justify-content: center;
+    }
+
+    .login-input{
+        font-size: 1.8rem;
     }
 
     #login-container {

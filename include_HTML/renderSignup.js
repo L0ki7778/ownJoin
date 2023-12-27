@@ -31,8 +31,8 @@ function renderSignup() {
                         min="8" 
                         required 
                         placeholder="Password"
-                        pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\\-]).{8,}$|(?=[0-9].*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\\-]).{8,}$"
-                        title="Bitte verwende Groß- und Kleinbuchstaben, sowie ein Sonderzeichen(#?!@$%^&*-) und mindestens eine Nummer">
+                        pattern="^(?=.*[a-z])(?=.*[A-Z]).{8,}$|^(?=.*[A-Z])(?=.*[a-z]).{8,}$"
+                        title="Please use at least 8 characters with at least one uppercase letter and one lowercase letter">
                     <div class="eye-container"><img class="input-img lock" src="assets/img/lock.png" alt="lock"></div>
             </div>
             <div class="login-input-fields">
@@ -40,10 +40,11 @@ function renderSignup() {
                         id="confirm_password" 
                         type="password" 
                         placeholder="Password Conformation"
-                        title="Bitte verwende Groß- und Kleinbuchstaben, sowie ein Sonderzeichen(#?!@$%^&*-) und mindestens eine Nummer">
+                        title="Please use at least 8 characters with at least one uppercase letter and one lowercase letter">
                 <div class="eye-container"><img class="input-img lock" src="assets/img/lock.png" alt="lock"></div>
             </div>
-            <div class="reminder d-none" id="pw-check-reminder">Ups?! Your passwords don't match.</div>
+            <div class="no-match d-none" id="pw-match-reminder">Ups?! Your passwords don't match.</div>
+            <div class="chatacters d-none" id="pw-check-reminder">You need at least 8 characters.</div>
         </div>
         <div>
             <div id="policy-check" class="d-flex">
@@ -99,8 +100,8 @@ function renderLogin() {
                     <div id="password-container" class="login-input-fields">
                         <input class="login-input password" id="login-password" type="password" min="8" required
                             placeholder="Password"
-                            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\\-]).{8,}$"
-                            title="Bitter verwende mindestens eine Zahl und ein Sonderzeichen.">
+                            pattern="^(?=.*[a-z])(?=.*[A-Z]).{8,}$|^(?=.*[A-Z])(?=.*[a-z]).{8,}$"
+                            title="Please use at least 8 characters with at least one uppercase letter and one lowercase letter">
                         <div class="eye-container"><img  class="lock input-img" src="assets/img/lock.png" alt="lock"></div>
                     </div>
                     <div id="log-in-check" class="d-flex">

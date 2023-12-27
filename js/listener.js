@@ -1,3 +1,25 @@
+let titleLock=false;
+let descriptionLock=false;
+let dateLock=false;
+let categoryLock=false;
+
+
+
+/**
+ * Checks if all locks are enabled and enables the create task button if they are.
+ * 
+ * @return {void} No return value.
+ */
+function checkAllLocks(){
+    if(titleLock && descriptionLock && dateLock && categoryLock){
+       let btn= document.getElementById("createTaskButton") || document.getElementById("edit-ok-btn");
+       btn.disabled=false;
+    }else{
+        return
+    }
+}
+
+
 /**
  * Adds event listeners to input elements in the document.
  *
@@ -55,10 +77,13 @@ function validateTitleInput() {
     if (title.value.length === 0) {
         container.style = "box-shadow: inset 0 0 1px 1px #FF4646!important;";
         message.classList.remove("d-none");
+        titleLock=false;
         btn.disabled = true;
     } else {
+        titleLock=true;
         message.classList.add("d-none");
         container.style = "";
+        checkAllLocks()
         return true;
     }
 }
@@ -77,10 +102,13 @@ function validateDescriptionInput() {
     if (description.value.length === 0) {
         container.style = "box-shadow: inset 0 0 1px 1px #FF4646!important;";
         message.classList.remove("d-none");
+        descriptionLock=false;
         btn.disabled = true;
     } else {
+        descriptionLock=true;
         container.style = "";
         message.classList.add("d-none");
+        checkAllLocks()
         return true;
     }
 }
@@ -102,13 +130,17 @@ function validateDateInput() {
         div.style = "box-shadow: inset 0 0 1px 1px #FF4646!important;";
         message.classList.remove("d-none");
         btn.disabled = true;
+        dateLock=false;
     } else if (selectedDate < currentDate) {
         div.style = "box-shadow: inset 0 0 1px 1px #FF4646!important;";
         message.classList.remove("d-none");
         btn.disabled = true;
+        dateLock=false;
     } else {
+        dateLock=true;
         message.classList.add("d-none");
         div.style = "";
+        checkAllLocks()
         return true;
     }
 }
@@ -124,8 +156,11 @@ function categoryResponse() {
     let category = document.getElementById("category");
     let btn = document.getElementById("createTaskButton") || document.getElementById("edit-ok-btn");
     if (category.value == "Technical Task" || category.value == "User Story") {
+        categoryLock=true;
+        checkAllLocks()
         return true;
     } else {
+        categoryLock=false;
         btn.disabled = true;
         return false;
     }

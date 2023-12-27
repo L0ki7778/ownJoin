@@ -20,18 +20,33 @@ function validatePassword() {
   let password = document.getElementById("create_password");
   let confirm_password = document.getElementById("confirm_password");
   let div = document.getElementsByClassName("login-input-fields");
-  if (password.value !== confirm_password.value) {
+  if (password.value != confirm_password.value) {
     noMatch(div[2], div[3], confirm_password);
+  } else if (password.value.length < 8 && confirm_password.value.length < 8) {
+    noLength(div[2], div[3], confirm_password)
   } else if (password.value === confirm_password.value && confirm_password.value.length >= 8) {
     match(div[2], div[3], confirm_password)
-    return password.value
+    return true
   }
 }
 
 
 function noMatch(pawsswordDiv, confirmationDiv, confirm_password) {
-  document.getElementById('pw-check-reminder').classList.remove('d-none')
+  let length = document.getElementById('pw-check-reminder');
+  if(!length.classList.contains('d-none')){length.classList.add('d-none')}
+  document.getElementById('pw-match-reminder').classList.remove('d-none')
   confirm_password.setCustomValidity("Passwords Don't Match"),
+  pawsswordDiv.style = "border: 3px solid red!important";
+  confirmationDiv.style = "border: 3px solid red!important";
+  disableSignUp();
+  return false
+}
+
+function noLength(pawsswordDiv, confirmationDiv, confirm_password) {
+  let match = document.getElementById('pw-match-reminder');
+  if(!match.classList.contains('d-none')){match.classList.add('d-none')}
+  document.getElementById('pw-check-reminder').classList.remove('d-none')
+  confirm_password.setCustomValidity("Passwords not long enough"),
   pawsswordDiv.style = "border: 3px solid red!important";
   confirmationDiv.style = "border: 3px solid red!important";
   disableSignUp();
@@ -40,7 +55,7 @@ function noMatch(pawsswordDiv, confirmationDiv, confirm_password) {
 
 
 function match(pawsswordDiv, confirmationDiv, confirm_password) {
-  document.getElementById('pw-check-reminder').classList.add('d-none')
+  document.getElementById('pw-match-reminder').classList.add('d-none')
   pawsswordDiv.style = "border: 3px solid green!important";
   confirmationDiv.style = "border: 3px solid green!important";
   confirm_password.setCustomValidity('');
@@ -52,17 +67,16 @@ function match(pawsswordDiv, confirmationDiv, confirm_password) {
 
 
 function formValidation() {
-  let password = validatePassword();
-  if (validatePassword) {
-    if(isStrongPassword(password)){
-      enableSignUp()
-    }else{
+  let password = document.getElementById('create_password');
+  let value = password.value;
+  if (validatePassword()) {
+    if(!isStrongPassword(value)){
       password.setCustomValidity(passwordPattern);
-      disableSignUp()
-    }
-  } else {
-    disableSignUp()
-  }
+      enableSignUp()}
+    else if(isStrongPassword(value)){
+      password.setCustomValidity('')
+      enableSignUp()}
+  } 
 }
 
 
@@ -99,7 +113,7 @@ function signUpCheckBox(box, img) {
   } else if (!box.checked) {
     box.checked = true;
     img.src = '/assets/img/checked-box.png';
-    img.style = 'width: 20px; height: 20px;transform:translate(5px,5px);margin-right:12px';
+    img.style = 'width: 1.125rem; height: 1.125rem;transform:translate(.3125rem,.3125rem);margin-right:.725rem';
   }
 }
 
@@ -117,7 +131,7 @@ function signUp() {
   let mail = document.getElementById('sign-up_mail').value;
   let password = document.getElementById('create_password').value;
   if (findExistingAccount(mail)) {
-    return popUp(existingMail, 373)
+    return popUp(existingMail, 23.3125)
   } else { createAccount(name, mail, password) }
 }
 
@@ -174,8 +188,8 @@ function popUp(text, width) {
   let popUp = document.getElementById('info-text');
   let container = document.getElementById('info-no-mail');
   popUp.innerHTML = text;
-  container.style.width = width + "px";
-  container.style.transform = "translateY(50%)";
+  container.style.width = width + "rem";
+  container.style.transform = "translateY(400%)";
   setTimeout(() => {
     container.style.transform = "translateY(-105%)";
   }, 2000)
@@ -183,7 +197,7 @@ function popUp(text, width) {
 
 
 function isStrongPassword(password) {
-  let regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\\-]).{8,}$|(?=[0-9]*.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\\-]).{8,}$/;
+  let regex = /^(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$|^(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
   let result = regex.test(password);
   return result;
 }

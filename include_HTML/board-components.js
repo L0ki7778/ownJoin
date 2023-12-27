@@ -33,7 +33,7 @@ function renderComponents(activeUser) {
                 <div class="drag-head">
                     <h4>To do</h4>
                     <img class="drag-headlines-plus" src="/assets/img/board-plus.png" alt="plus in box"
-                        onclick="openPopUp(),changeStatus('To-Do'),addAssigneesSelection()">
+                        onclick="openPopUp(),changeStatus('To-Do'),addAssigneesSelection(),clickMedium('medium')">
                 </div>
                 <div class="drag-area" id="To-Do" ondrop="moveTo('To-Do')" ondragleave="removeHighlight('To-Do')"
                     ondragover="allowDrop(event); highlight('To-Do')">
@@ -43,7 +43,7 @@ function renderComponents(activeUser) {
                 <div class="drag-head">
                     <h4>In progress</h4>
                     <img class="drag-headlines-plus" src="/assets/img/board-plus.png" alt="plus in box"
-                        onclick="openPopUp(),changeStatus('In-Progress'),addAssigneesSelection()">
+                        onclick="openPopUp(),changeStatus('In-Progress'),addAssigneesSelection(),clickMedium('medium')">
                 </div>
                 <div class="drag-area" id="In-Progress" ondrop="moveTo('In-Progress')"
                     ondragleave="removeHighlight('In-Progress')" ondragover="allowDrop(event); highlight('In-Progress')">
@@ -53,7 +53,7 @@ function renderComponents(activeUser) {
                 <div class="drag-head">
                     <h4>Await feedback</h4>
                     <img class="drag-headlines-plus" src="/assets/img/board-plus.png" alt="plus in box"
-                        onclick="openPopUp(),changeStatus('Await-Feedback'),addAssigneesSelection()">
+                        onclick="openPopUp(),changeStatus('Await-Feedback'),addAssigneesSelection(),clickMedium('medium')">
                 </div>
                 <div class="drag-area" id="Await-Feedback" ondrop="moveTo('Await-Feedback')"
                     ondragleave="removeHighlight('Await-Feedback')"
@@ -207,7 +207,7 @@ function styleTodo() {
     let popUp = document.getElementById('pop-up-container');
     let sheet = document.getElementById('single-todo');
     sheet.style.boxShadow = 'none';
-    popUp.style = 'width:30rem; padding:2rem 1rem';
+    popUp.style = 'width:28rem; padding:2rem 1rem';
 }
 
 

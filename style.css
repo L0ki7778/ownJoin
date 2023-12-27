@@ -21,7 +21,7 @@ body {
     left: 14rem;
     width: calc(100% - 14rem);
     top: 7rem;
-    height: 89vh;
+    height: 89vh;    
 }
 
 .d-none {
@@ -43,6 +43,8 @@ body {
     left: 3rem;
     width: calc(100% - 8rem);
     margin-bottom: 3rem;
+    font-size: 1.3rem;
+    
 }
 
 #english>h1 {
@@ -60,6 +62,8 @@ body {
     left: 3rem;
     width: calc(100% - 8rem);
     margin-bottom: 3rem;
+    font-size: 1.3rem;
+    
 }
 
 .arrow {
@@ -192,20 +196,6 @@ body {
         position: absolute;
         top: 3rem;
         height: calc(100vh - 14rem);
-        &::-webkit-scrollbar {
-        width: .625rem;
-        margin-top: 1.25rem
-    }
-
-    &::-webkit-scrollbar-track {
-        background: white;
-        border-radius: .9375rem;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: .9375rem;
-    }
     }
 
     #english,
@@ -243,13 +233,13 @@ body {
     }
 }
 
-@media screen and (max-width: 455px) {
+@media screen and (max-width: 430px) {
     :root {
-        font-size: 10px;
+        font-size: 11px;
     }
 
 }
-
+/* 
 @media screen and (max-width: 355px) {
     :root {
         font-size: 9px;
@@ -261,4 +251,4 @@ body {
     :root {
         font-size: 8px;
     }
-}
+} */

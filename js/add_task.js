@@ -103,7 +103,7 @@ function checkBoxClicked(priority) {
     deactivateOtherCheckboxes(priority);
     span.style.backgroundColor = getColor(priority);
     changeImageSrc(priority, image);
-  } else {image.src = "/assets/img/" + priority.toLowerCase() + "-priority.png"}
+  } else { image.src = "/assets/img/" + priority.toLowerCase() + "-priority.png" }
 }
 
 
@@ -113,13 +113,13 @@ function checkBoxClicked(priority) {
  *
  * @param {string} priority - The priority of the medium element.
  */
-function clickMedium(priority){
+function clickMedium(priority) {
   let image = document.getElementById(priority + "-img");
   let span = document.getElementById(priority + "-span");
   deactivateOtherCheckboxes(priority);
-    span.style.backgroundColor = getColor(priority);
-    span.style.color= "white";
-    changeImageSrc(priority, image);
+  span.style.backgroundColor = getColor(priority);
+  span.style.color = "white";
+  changeImageSrc(priority, image);
 }
 
 
@@ -129,16 +129,16 @@ function clickMedium(priority){
 function resetColor() {
   let span = document.getElementsByClassName('priority-span');
   for (let i = 0; i < span.length; i++) {
-    span[i].style.backgroundColor = "";
-  } checkBoxClicked
+    span[i].style = "";
+  }
 }
 
 
 function resetBoardColor() {
   let span = document.getElementsByClassName('edit-priority-span');
   for (let i = 0; i < span.length; i++) {
-    span[i].style.backgroundColor = "";
-  } checkBoxClicked
+    span[i].style = "";
+  }
 }
 
 
@@ -152,7 +152,7 @@ function deactivateOtherCheckboxes(currentPriority) {
       document.getElementById(priority).checked = false;
       document.getElementById(priority).parentNode.parentNode.style.backgroundColor = "";
       document.getElementById(priority + "-span").style.color = "";
-      document.getElementById(priority).closest(".prio").querySelector(".prioImgs").src ="/assets/img/" + priority.toLowerCase() + "-priority.png";
+      document.getElementById(priority).closest(".prio").querySelector(".prioImgs").src = "/assets/img/" + priority.toLowerCase() + "-priority.png";
     }
   }
   pushCurrentPriority(currentPriority);
@@ -208,8 +208,9 @@ function changeImageSrc(priority, image) {
       if (image instanceof HTMLImageElement) {
         image.onload = function () { };
         image.onerror = function () { };
-        image.src = newSrc} 
-    } 
+        image.src = newSrc
+      }
+    }
   });
 }
 
@@ -222,9 +223,11 @@ function changeImageSrc(priority, image) {
 function checkImageExists(url, callback) {
   let img = new Image();
   img.onload = function () {
-    callback(true);};
+    callback(true);
+  };
   img.onerror = function () {
-    callback(false);};
+    callback(false);
+  };
   img.src = url;
 }
 
@@ -282,7 +285,7 @@ function openList(containerID, inputID, ulID, iconID) {
     container.style = 'z-index:6'
     ul.classList.remove('d-none')
     ul.style = 'z-index:5'
-  } else {return closeList(containerID, inputID, ulID, iconID)}
+  } else { return closeList(containerID, inputID, ulID, iconID) }
 }
 
 /**
@@ -339,34 +342,36 @@ function pushSubTasks() {
     return subTaskClose()
   } else if (task.value.length == 0) {
     task.setCustomValidity('Kindly type in a subtask before adding one.')
-    task.reportValidity()}
+    task.reportValidity()
+  }
 }
 
 /**
  * Clears all input and textarea fields, clears the assignees, resets the category value, and disables the create/edit task button.
  */
 function clearAll() {
-  clearAssignees()
-  let input = document.querySelectorAll('input');
-  let textarea = document.querySelectorAll('textarea');
-  for (let i = 0; i < input.length; i++) {
-    input[i].value = '';}
-    for (let i = 0; i < textarea.length; i++) {
-      textarea[i].value = '';};
-  clearCategoryValue()
-  let btn = document.getElementById('createTaskButton')||document.getElementById('edit-ok-btn');
-  btn.disabled = true
+  clearAssignees();
+  document.getElementById('prio').innerHTML=clearPrio();
+  document.getElementById('medium').click();
+  document.getElementById('description').value = "";
+  document.getElementById('title').value = "";
+  document.getElementById('date').value = "";
+  clearCategoryValue();
+  validateTitleInput();
 }
 
 
 /**
  * Clears the assignees by resetting the clickList array.
  */
-function clearAssignees(){
-  let clickList = [];
-  clickList.push(...assignees)
-  for(let i=0; i < clickList.length; i++){
-    addboxClick(i,checkList[i])
+function clearAssignees() {
+  let list = document.getElementsByClassName('contact');
+  for (let i = 0; i < list.length; i++) {
+    let listItem= list[i];
+    let box = document.getElementById(`check${i}`);
+    if(box.checked){
+      listItem.click()
+    }
   }
 }
 
@@ -376,7 +381,7 @@ function clearAssignees(){
 function pushInfo() {
   let info = document.getElementById('info')
   info.classList.add('push-up');
-  setTimeout(() => {goToBoard()}, 2000)
+  setTimeout(() => { goToBoard() }, 2000)
 };
 
 /**
@@ -384,6 +389,7 @@ function pushInfo() {
  */
 function goToBoard() {
   window.location.href = '/html/board.html';
+  hideExcessElements();
 };
 
 /**
@@ -391,7 +397,7 @@ function goToBoard() {
  *
  * @param {number} i - The index of the checkbox.
  */
-function addboxClick(i,id) {
+function addboxClick(i, id) {
   let checkbox = document.getElementById(`check${i}`);
   let img = document.getElementById(`img-box${i}`);
   logTaskCheckBox(checkbox, img, id);
@@ -428,7 +434,8 @@ function addSubtaskListener() {
     if (event.key === 'Enter' && input.value.length > 0) {
       pushSubTasks();
     } else if (event.key === 'Enter' && input.value.length == 0) {
-      event.preventDefault();}
+      event.preventDefault();
+    }
   });
 }
 
@@ -440,7 +447,7 @@ function addSubtaskListener() {
 function pushEditAssignees(task) {
   assignees = [];//emptying global array
   let index = contacts.filter((e) => task.assignees.includes(e.id))
-  index.forEach((element) => {addboxClick(contacts.indexOf(element),element.id)})
+  index.forEach((element) => { addboxClick(contacts.indexOf(element), element.id) })
 }
 
 /**
@@ -448,14 +455,6 @@ function pushEditAssignees(task) {
  *
  * @param {string} newPrio - The new priority.
  */
-function editPrio(newPrio) {editArr = [newPrio]}
+function editPrio(newPrio) { editArr = [newPrio] }
 
-/**
- * Checks all input fields for validity. If all inputs are valid, the create/edit task button is enabled.
- */
-function checkAllInputs(){
-  let btn = document.getElementById('createTaskButton')||document.getElementById('edit-ok-btn');
-  if(validateTitleInput() && validateDescriptionInput() && validateDateInput()&& categoryResponse()){
-    btn.disabled = false;}
-}
 

@@ -104,6 +104,14 @@ section {
     padding-bottom: 1.5rem;
 }
 
+.createTaskButton{
+    width: 15rem;
+}
+
+.createTaskButton img{
+height: 1rem;
+margin-left: .5rem;
+}
 .contactButton {
     display: flex;
     justify-content: center;
@@ -194,6 +202,7 @@ section {
 
 .nameLinkDiv>a {
     text-decoration: none;
+    font-size: 1.3rem;
 }
 
 
@@ -223,7 +232,7 @@ section {
 }
 
 .fullName {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 .nameLinkDiv {
@@ -263,6 +272,17 @@ section {
     margin-bottom: 2rem;
 }
 
+   
+#userProfile>div p{
+    font-size: 1.4rem;
+    font-weight: 400!important;
+}
+.pProfile{
+    font-size: 1.5rem!important;
+    margin:1rem 0;
+    font-weight: 500!important;
+}
+
 .pMail {
     margin-top: 1rem;
 }
@@ -275,6 +295,12 @@ section {
     width: 2.0625rem;
     display: none
 }
+
+.form-control{
+    font-size: 1.4rem!important;
+}
+
+
 
 .blueLine {
     border: .1875rem solid #29ABE2;
@@ -290,7 +316,7 @@ section {
 }
 
 .spanContact {
-    font-size: 1.5rem;
+    font-size: 1.62rem;
 }
 
 .userProfile {
@@ -303,13 +329,14 @@ section {
 
 #userProfile>div a{
     text-decoration: none;   
+    font-size: 1.4rem;
 }
 
 .topProfile {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
     padding-top: .75rem;
     padding-bottom: .75rem;
 }
@@ -507,7 +534,7 @@ h2 {
     justify-content: center;
     align-items: center;
     border: unset;
-    font-size: 1rem;
+    font-size: 1.3rem;
     background-color: #F6F7F8;
     gap: .5rem;
 }
@@ -541,8 +568,8 @@ form {
 }
 
 input+img {
-    height: 1.5rem !important;
-    width: 1.5rem !important;
+    height: 2rem !important;
+    width: 2rem !important;
     position: absolute;
     right: 1rem;
     top: 0;
@@ -610,8 +637,8 @@ input[type=number] {
 }
 
 .buttonPopUp>img {
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 2rem;
+    width: 2rem;
 }
 
 .contactButton>img {
@@ -650,14 +677,14 @@ input[type=number] {
         transform: translateX(0%);
     }
     100%{
-        transform: translateX(8rem);
+        transform: translateX(10rem);
     }
     
 }
 
 @keyframes edit {
     0%{
-        transform: translateX(8rem);
+        transform: translateX(10rem);
     }
     100%{
         transform: translateX(0);
@@ -692,6 +719,18 @@ input[type=number] {
         top: 0;
         padding: 0;
         left: 0;
+    }
+
+    .nameProfile{
+        display: flex;
+        width:57vw;
+        height: 100%;
+    }
+
+    .h2{
+        display: flex;
+        flex-wrap: wrap;
+        min-width: unset;
     }
 
     #help-arrow {
@@ -822,7 +861,9 @@ input[type=number] {
 
     .scrollDiv {
         align-items: center;
-        height: 100%;
+        height: 98%;
+        padding: .5rem 0;
+        margin: .5rem 0;
     }
 
     .contact {
@@ -872,7 +913,7 @@ input[type=number] {
         position: absolute;
         z-index: 11;
         right: 1rem;
-        width: 7rem;
+        width: 9rem;
         height: 6rem;
         bottom: 2rem;
         display: flex;
@@ -884,7 +925,7 @@ input[type=number] {
         border-radius: 0.9rem .9rem 0 .9rem;
         align-items: flex-start;
         background-color: white;
-        transform: translateX(8rem);
+        transform: translateX(10rem);
     }
 
     #mobile-edit-container>button{
@@ -904,24 +945,15 @@ input[type=number] {
         margin: auto;
     }
 
-    .pProfile{
-        font-size: 1.5rem!important;
-        margin:1rem 0;
-        font-weight: 500;
-    }
-
-    #userProfile>div p{
-        font-size: 1.2rem;
-        font-weight: 400!important;
-    }
-
+ 
+    
     .lineContact{
         width: 7.625rem;
     }
 
     #userProfile>div a{
         font-weight: 500;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     .blueLine {
@@ -932,4 +964,12 @@ input[type=number] {
         transform: rotate(90deg);
         margin: 0
     }
+
+   
+
+    input+img{
+        height: 2rem!important;
+        width: 2rem!important;
+    }
+
 }

@@ -2,6 +2,7 @@ let activeUser; //needed for the session storage of logged in user
 let allTasks = [];//storage and retrieval of all tasks
 let assignees=[]; //needed for rendering and manupulatin contact-assignments to specific tasks
 let awaitArr=[]; //auxiliary array for filtering awaiting feedback tasks
+let clearList=[];
 let counter = 0;  //auxiliary variable for manipulating finished subtasks and adjusting the progressbar
 let contacts = []; // storage and retrieval of contacts
 let contactId;

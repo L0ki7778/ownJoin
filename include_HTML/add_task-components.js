@@ -18,7 +18,7 @@ function renderAddTaskSections() {
         <h6>Assigned to</h6>
         <div class="relative">
             <div id="assign-select" class="input-group sub-container">
-                <input class="form-control subtask-input contact-assign-select select"
+                <input readonly class="form-control subtask-input contact-assign-select select"
                     onclick="openList('assign-select','assign','assign-ul','assign-icon')"
                     placeholder="Select contacts to assign" id="assign">
                 <button id="assign-btn" class="divIcon"
@@ -73,7 +73,7 @@ function renderAddTaskSections() {
                         type="checkbox" 
                         value="Medium" 
                         onclick="checkBoxClicked('medium')"
-                        checked>
+                        >
                     <span class="priority-span" id="medium-span">Medium <img class="prioImgs" id="medium-img"src="/assets/img/medium-priority.png" alt=""></span>
                 </label>
             </div>
@@ -103,13 +103,13 @@ function renderAddTaskSections() {
             </div>
             <div id="category-ul" class="ul-parent d-none">
                 <ul id="focus-category" class="drop-down-select-container">
-                    <li class=add-task-contact onclick="setValue('Technical Task');closeList('category-select','category','category-ul','category-icon');checkAllInputs()">
+                    <li class=add-task-contact onclick="setValue('Technical Task');closeList('category-select','category','category-ul','category-icon');categoryResponse()">
                         <div class="profile">
                             <div class="name">
                                 Technical Task</div>
                         </div>
                     </li>
-                    <li class=add-task-contact onclick="setValue('User Story');closeList('category-select','category','category-ul','category-icon');checkAllInputs()">
+                    <li class=add-task-contact onclick="setValue('User Story');closeList('category-select','category','category-ul','category-icon');categoryResponse()">
                         <div class="profile">
                             <div class="name">
                                 User Story</div>
@@ -202,6 +202,38 @@ function addAssigneesSelection() {
 }
 
 
+function clearPrio(){
+    return/*html*/`
+        <div class="prio Urgent">
+                <label>
+                    <input id="urgent" 
+                        type="checkbox" 
+                        value="Urgent" 
+                        onclick="checkBoxClicked('urgent')">
+                    <span class="priority-span" id="urgent-span">Urgent <img class="prioImgs" id="urgent-img"src="/assets/img/urgent-priority.png" alt=""></span>
+                </label>
+            </div>
+            <div class="prio Medium">
+                <label>
+                    <input id="medium" 
+                        type="checkbox" 
+                        value="Medium" 
+                        onclick="checkBoxClicked('medium')"
+                        >
+                    <span class="priority-span" id="medium-span">Medium <img class="prioImgs" id="medium-img"src="/assets/img/medium-priority.png" alt=""></span>
+                </label>
+            </div>
+            <div class="prio Low">
+                <label>
+                    <input id="low" 
+                        type="checkbox" 
+                        value="Low" 
+                        onclick="checkBoxClicked('low')">
+                    <span class="priority-span" id="low-span">Low <img class="prioImgs" id="low-img"src="/assets/img/low-priority.png" alt=""></span>
+                </label>
+            </div>
+    `
+}
 
 
 function renderEditIcons() {

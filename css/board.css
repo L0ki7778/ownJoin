@@ -1,5 +1,6 @@
-body {
-    overflow-x: hidden;
+
+html,body {
+    overflow: hidden;
 }
 
 main {
@@ -216,7 +217,7 @@ h1 {
     padding: .3125rem 1.25rem;
     color: white;
     border-radius: .625rem;
-    width: 2.1875rem;
+    width: 8rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -372,17 +373,17 @@ h5 {
     padding: 2rem;
     height: 45rem;
     overflow-y: auto;
+    margin-top: 2rem;
 
     &::-webkit-scrollbar {
         width: .625rem;
-        height: 20rem;
-        margin-top: 1.25rem
+        height: 15rem;
     }
 
 
     &::-webkit-scrollbar-track {
         border-radius: 2.1875rem;
-        margin-block: 3.125rem;
+        margin-block: 4.125rem;
     }
 
     &::-webkit-scrollbar-thumb {
@@ -413,6 +414,7 @@ h5 {
 }
 
 .edit-ul-task-list {
+
     margin-bottom: 1rem !important;
 }
 
@@ -426,10 +428,10 @@ h5 {
 
 
 
-.left-section,
+/* .left-section,
 .right-section {
     width: 50%;
-}
+} */
 
 .container {
     margin: 0 !important;
@@ -469,7 +471,7 @@ h6:not(:first-of-type):not(:nth-of-type(4)) {
 }
 
 .row {
-    padding: .125rem !important
+    padding: .5rem !important
 }
 
 .clearButton {
@@ -574,7 +576,7 @@ h6 :hover {
 }
 
 #pop-headline {
-    font-size: 3rem;
+    font-size: 3rem!important;
     margin-bottom: 1.5rem;
 
 }
@@ -768,7 +770,7 @@ ul {
     color: #29ABE2;
 }
 
-#openMoveTaskMenu{
+#openMoveTaskMenu {
     display: none;
 }
 
@@ -778,15 +780,16 @@ ul {
     right: -11rem;
 }
 
-.moveTaskButton{
+.moveTaskButton {
     font-size: 1.2rem;
     font-weight: 500;
     width: 100%;
     text-align: start;
-    border-bottom: 1px solid #29ABE2!important;
+    border-bottom: 1px solid #29ABE2 !important;
 }
-.moveTaskButton:last-child{
-    border-bottom: unset!important;
+
+.moveTaskButton:last-child {
+    border-bottom: unset !important;
 }
 
 @media screen and (max-width: 960px) {
@@ -797,7 +800,33 @@ ul {
         padding-top: 2rem
     }
 
-    #openMoveTaskMenu{
+    .edit-priority-span {
+        width: 6rem !important;
+    }
+
+    .add-task-bottom-section {
+        background-color: white;
+        bottom: 2rem;
+        width: 98%;
+    }
+
+    #pop-up-container {
+        padding: 0 1.5rem !important
+    }
+
+    .sections {
+        height: 50vh;
+    }
+
+    .createTaskButton {
+        font-size: 1.3rem;
+    }
+
+    .edit-sections{
+        padding: 1rem
+    }
+
+    #openMoveTaskMenu {
         display: block;
     }
 
@@ -806,7 +835,7 @@ ul {
     }
 
     #content-box {
-        height: 37rem;
+        height: 52vh;
     }
 
     .drag-area {
@@ -817,6 +846,31 @@ ul {
     .buttonAddMobile {
         display: flex;
         padding-left: 0.5rem;
+    }
+
+    .subtask-input{
+        height: 2rem;
+        font-size: 1.3rem!important;
+    }
+
+    .descriptionBoardPopUp{
+        font-size: 1.4rem!important;
+    }
+
+    #assignement{
+        width: 20rem;
+    }
+
+    .sub-text{
+        font-size: 1.2rem;
+    }
+
+    .name{
+        font-size: 1.4rem;
+    }
+
+    #todo-edit-footer>button{
+        font-size: 1.2rem;
     }
 
     .headline {
@@ -836,6 +890,14 @@ ul {
         margin-bottom: 0;
     }
 
+    .single-subtask,.single-finished-task{
+        font-size: 1.3rem!important;
+    }
+
+    .deleteSubtaskImg{
+        width: 2rem;
+    }
+
     .buttonAddMobile {
         position: absolute;
         top: 1.5rem;
@@ -843,6 +905,10 @@ ul {
         margin: 0;
     }
 
+    #task-list{
+        width: 18rem;
+    }
+    
     .buttonAdd {
         display: none;
     }
@@ -865,6 +931,10 @@ ul {
 
     }
 
+    #task-container {
+        height: 80%;
+    }
+
     .drag-area {
         overflow: scroll;
         min-height: 5rem;
@@ -877,6 +947,7 @@ ul {
     .todo {
         height: 14rem;
         width: 15rem;
+        min-width:15rem
     }
 
     .drag-area>div>.todo-content {
@@ -889,6 +960,7 @@ ul {
     #single-todo {
         width: 93%;
         height: 92%;
+        margin-top:2rem;
         overflow-y: scroll !important;
 
         &::-webkit-scrollbar {
@@ -896,7 +968,7 @@ ul {
         }
     }
 
-    #close-pop-up >img{
+    #close-pop-up>img {
         width: 1.4rem;
         height: 1.5rem;
     }

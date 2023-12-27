@@ -1,7 +1,8 @@
 let data;
-const noAcc="Es ist kein Konto mit dieser Email-Adresse registriert.";
-const wrongPass ="Email-Adresse oder Passwort stimmen nicht überein";
-const passwordPattern = "Bitte verwende Groß- und Kleinbuchstaben, sowie ein Sonderzeichen(#?!@$%^&*-) und mindestens eine Nummer";
+const noAcc="No registered account with this email";
+const wrongPass ="Wrong password";
+const passwordPattern = "Please use upper and lowercase letters and at least 8 characters";
+
 
 
 
@@ -191,12 +192,12 @@ function logIn() {
   let mail = document.getElementById('login-mail');
   let password = document.getElementById('login-password');
   if (match.length === 0) {
-    return popUp(noAcc,575)
+    return popUp(noAcc,35.9375)
   } else if (mail.value === match[0].mail && password.value === match[0].password) {
     logUser(JSON.stringify(match))
     location.replace('/html/summary.html')
   } else {
-    popUp(wrongPass,567)
+    popUp(wrongPass,35.4375)
   }
 }
 
