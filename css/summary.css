@@ -4,7 +4,7 @@
     --outline-active: #74C5E8;
     --outline-error: #FF6073;
     font-family: 'Inter', sans-serif;
-    --opactity: 1;
+    --opacity: 1;
     --display: flex;
     --background: #F6F7F8;
 }
@@ -22,7 +22,23 @@
     }
 
     99% {
-        opacity: var(--opactity);
+        opacity: var(--opacity);
+        display: flex;
+    }
+
+    100% {
+        display: var(--display);
+    }
+}
+
+@-webkit-keyframes fade-out {
+    0% {
+        opacity: 1;
+        display: flex;
+    }
+
+    99% {
+        opacity: var(--opacity);
         display: flex;
     }
 
@@ -189,6 +205,16 @@ a>span {
 }
 
 @keyframes greet {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes greet {
     from {
         opacity: 0;
     }
@@ -389,7 +415,7 @@ a>span {
 
     :root {
         font-size: 14px;
-        --opactity: 0;
+        --opacity: 0;
         --display: none !important;
     }
 }

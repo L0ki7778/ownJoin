@@ -36,6 +36,36 @@
     }
 }
 
+@-webkit-keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(var(--translate));
+    }
+}
+
+@-webkit-keyframes slideIn {
+    from {
+        transform: translateX(var(--translate));
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@-webkit-keyframes slide-back {
+    from {
+        transform: translateX(var(--back));
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
 html,
 body {
   width: 100%;
@@ -414,6 +444,28 @@ h2 {
 
 }
 
+@-webkit-keyframes slide-contact-in {
+    0% {
+        transform: var(--translate-contact);
+    }
+
+    100% {
+        transform: var(--translate-contact-secondary);
+    }
+
+}
+
+@-webkit-keyframes slide-contact-out {
+    0% {
+        transform: var(--translate-contact-secondary);
+    }
+
+    100% {
+        transform: var(--translate-contact);
+    }
+
+}
+
 .logoContact {
     display: flex;
     justify-content: center;
@@ -683,6 +735,26 @@ input[type=number] {
 }
 
 @keyframes edit {
+    0%{
+        transform: translateX(10rem);
+    }
+    100%{
+        transform: translateX(0);
+    }
+    
+}
+
+@-webkit-keyframes edit-out {
+    0%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(10rem);
+    }
+    
+}
+
+@-webkit-keyframes edit {
     0%{
         transform: translateX(10rem);
     }
