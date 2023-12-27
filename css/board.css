@@ -936,11 +936,21 @@ ul {
     }
 
     .drag-area {
-        overflow: scroll;
+        overflow-x: scroll;
         min-height: 5rem;
 
         &::-webkit-scrollbar {
-            display: none;
+            height: .825rem;
+        }
+    
+        &::-webkit-scrollbar-track {
+            background: white;
+            border-radius: .9375rem;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: .9375rem;
         }
     }
 
