@@ -323,7 +323,7 @@ function loginCheckBox(box, img){
   } else if (!box.checked) {
     box.checked = true;
     img.src = '/assets/img/checked-box.png';
-    img.style = 'width: 18px; height: 18px';
+    img.style = 'width: 1.125rem; height: 1.125rem;transform:translate(.375rem,0px);margin-right:.75rem;right:.9rem';
   }
 }
 

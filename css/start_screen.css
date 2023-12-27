@@ -730,6 +730,14 @@ footer>a {
         font-size: 10px;
     }
 
+    .login-input{
+        font-size: 1.8rem;
+    }
+
+    .reminder{
+        font-size: 1.3rem;
+    }
+
     #signup-container {
         width: 95%;
         height: 55rem;
@@ -968,7 +976,11 @@ footer>a {
     }
 
     .login-input-fields {
-        padding: 0 1.3rem
+        padding: 0 1.8rem
+    }
+
+    .reminder {
+        font-size: 1.3rem;
     }
 
 

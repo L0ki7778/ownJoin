@@ -131,7 +131,7 @@ function signUp() {
   let mail = document.getElementById('sign-up_mail').value;
   let password = document.getElementById('create_password').value;
   if (findExistingAccount(mail)) {
-    return popUp(existingMail, 23.3125)
+    return popUp(existingMail, 24.3125)
   } else { createAccount(name, mail, password) }
 }
 
