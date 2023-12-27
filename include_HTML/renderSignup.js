@@ -32,7 +32,7 @@ function renderSignup() {
                         required 
                         placeholder="Password"
                         pattern="^(?=.*[a-z])(?=.*[A-Z]).{8,}$|^(?=.*[A-Z])(?=.*[a-z]).{8,}$"
-                        title="Please use at least 8 characters with at least one uppercase letter and one lowercase letter">
+                        title="Kindly use upper- and lowercase letters.">
                     <div class="eye-container"><img class="input-img lock" src="assets/img/lock.png" alt="lock"></div>
             </div>
             <div class="login-input-fields">
@@ -40,11 +40,11 @@ function renderSignup() {
                         id="confirm_password" 
                         type="password" 
                         placeholder="Password Conformation"
-                        title="Please use at least 8 characters with at least one uppercase letter and one lowercase letter">
+                        title="Kindly use upper- and lowercase letters.">
                 <div class="eye-container"><img class="input-img lock" src="assets/img/lock.png" alt="lock"></div>
             </div>
             <div class="no-match d-none" id="pw-match-reminder">Ups?! Your passwords don't match.</div>
-            <div class="chatacters d-none" id="pw-check-reminder">You need at least 8 characters.</div>
+            <div class="characters d-none" id="pw-check-reminder">You need at least 8 characters.</div>
         </div>
         <div>
             <div id="policy-check" class="d-flex">
@@ -101,7 +101,7 @@ function renderLogin() {
                         <input class="login-input password" id="login-password" type="password" min="8" required
                             placeholder="Password"
                             pattern="^(?=.*[a-z])(?=.*[A-Z]).{8,}$|^(?=.*[A-Z])(?=.*[a-z]).{8,}$"
-                            title="Please use at least 8 characters with at least one uppercase letter and one lowercase letter">
+                            title="Kindly use upper- and lowercase letters.">
                         <div class="eye-container"><img  class="lock input-img" src="assets/img/lock.png" alt="lock"></div>
                     </div>
                     <div id="log-in-check" class="d-flex">

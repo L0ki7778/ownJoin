@@ -173,7 +173,7 @@ function renderSubTasksList() {
     })
     if (finishedSubTasks.length > 0) {
         finishedSubTasks.forEach((e) => {
-            list.innerHTML += `<div class="subTaskListFlex"><li class="single-finished-task" onclick="editListItem(${subTasks.indexOf(e)}) id="f${finishedSubTasks.indexOf(e)}">${e}</li><img class="deleteSubtaskImg" onclick="deleteSubtask('${subTasks.indexOf(e)}')" src="/assets/img/delete.png" alt=""></div>`
+            list.innerHTML += `<div class="subTaskListFlex"><li class="single-finished-task" onclick="editListItem(${subTasks.indexOf(e)}) id="f${finishedSubTasks.indexOf(e)}">${e}</li></div>`
         })
     }
 }

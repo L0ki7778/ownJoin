@@ -808,6 +808,7 @@ ul {
         background-color: white;
         bottom: 2rem;
         width: 98%;
+        padding:0;
     }
 
     #pop-up-container {
@@ -820,6 +821,7 @@ ul {
 
     .createTaskButton {
         font-size: 1.3rem;
+        height: 4rem;
     }
 
     .edit-sections{

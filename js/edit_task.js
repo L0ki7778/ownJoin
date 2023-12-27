@@ -95,18 +95,15 @@ function getSubList(subtaskList, finishedTaskList) {
  * @return {Array} - the list of HTML list items representing the finished tasks.
  */
 function getEditFinishedList(finishedVariable) {
+  finishedSubTasks=[];
   let finArr=finishedVariable
   let finLiArr = [];
-  if (finArr.length === 0) {
-    return false;
-  }
+  if (finArr.length === 0) {return false}
   for (let i = 0; i < finArr.length; i++) {
     let fin = finArr[i];
-    finishedSubTasks=[];
     finishedSubTasks.push(fin);
-    finLiArr.push(`<li class="single-finished-task" id="f${i}">${fin}</li>`);
-  }
-  return finLiArr;
+    finLiArr.push(`<li class="single-finished-task" id="f${i}">${fin}</li>`)
+  };return finLiArr;
 }
 
 
