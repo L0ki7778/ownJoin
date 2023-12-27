@@ -230,7 +230,6 @@ function openTodoPopup(id) {
  */
 async function deleteTask(id) {
     let object = allTasks.find((task) => task.id == id);
-
     if (object) {
         let index = allTasks.indexOf(object);
         allTasks.splice(index, 1);
@@ -238,6 +237,7 @@ async function deleteTask(id) {
     await setAllTasks(tasksKey, allTasks);
     closePopUp(); //board.js: 169
     updateBoard(); //board.js: 24
+    hideExcessElements()
 }
 
 

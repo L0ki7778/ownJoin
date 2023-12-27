@@ -747,6 +747,11 @@ ul {
     /* Standard syntax */
 }
 
+.subTaskListFlex{
+    width: 100%;
+    max-width: 20rem;
+}
+
 .moveButtons {
     width: 15rem;
     display: flex;
@@ -801,7 +806,7 @@ ul {
     }
 
     .edit-priority-span {
-        width: 6rem !important;
+        width: 7.2rem !important;
     }
 
     .add-task-bottom-section {
@@ -900,6 +905,10 @@ ul {
         width: 2rem;
     }
 
+    #prio{
+        gap:.5rem
+    }
+
     .buttonAddMobile {
         position: absolute;
         top: 1.5rem;
@@ -908,7 +917,7 @@ ul {
     }
 
     #task-list{
-        width: 18rem;
+        width: 22rem;
     }
     
     .buttonAdd {
@@ -926,6 +935,10 @@ ul {
     .headline>h1 {
         position: absolute;
         top: 1rem
+    }
+
+    .subTaskListFlex{
+        max-width: unset;
     }
 
     .drag-headlines {

@@ -117,7 +117,6 @@ function editSlider(){
 
 
 function closeEditSlider(){
-  console.log("edit")
   let edit = document.getElementById("mobile-edit-container");
   if(edit.classList.contains("edit-slide-in")){
     edit.classList.remove("edit-slide-in");

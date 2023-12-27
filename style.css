@@ -97,44 +97,44 @@ body {
 
 @media screen and (max-width: 5500px) {
     :root {
-        font-size: 48px;
+        font-size: 42px;
     }
 
 }
 
 @media screen and (max-width: 4500px) {
     :root {
-        font-size: 40px;
+        font-size: 36px;
     }
 }
 
 @media screen and (max-width: 3900px) {
     :root {
-        font-size: 32px;
+        font-size: 28px;
     }
 }
 
 @media screen and (max-width: 3000px) {
     :root {
-        font-size: 28px;
+        font-size: 24px;
     }
 }
 
 @media screen and (max-width: 2650px) {
     :root {
-        font-size: 24px;
+        font-size: 22px;
     }
 }
 
 @media screen and (max-width: 2280px) {
     :root {
-        font-size: 20px;
+        font-size: 18px;
     }
 }
 
 @media screen and (max-width: 1920px) {
     :root {
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 

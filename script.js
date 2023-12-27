@@ -151,7 +151,6 @@ async function getUserList(key) {
     }
     const data = await response.json();
     userList = JSON.parse(data.data.value) || [];
-    console.log(userList);
   } catch (error) {
     console.error(error);
   }
