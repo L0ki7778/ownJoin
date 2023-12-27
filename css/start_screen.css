@@ -376,20 +376,13 @@ footer>a {
     border-radius: 10px;
 }
 
-.no-match {
+
+.reminder{
     position: absolute;
     transform: translate(1.6rem, -2rem);
     font-size: 1rem;
     color: red;
 }
-
-.characters{
-    position: absolute;
-    transform: translate(1.6rem, -2rem);
-    font-size: 1rem;
-    color: red;
-}
-
 
 .login-input-fields:has(input:focus) {
     animation: fade-border 0.2s ease 0s 1 forwards;
@@ -671,6 +664,7 @@ footer>a {
     display: flex;
     flex-direction: column;
 }
+
 
 @media screen and (min-width: 1280px) {
     #signup-container {
@@ -982,14 +976,4 @@ footer>a {
     .reminder {
         font-size: 1.3rem;
     }
-
-    .no-match {
-        font-size: 1.3rem;
-    }
-
-    .characters{
-        font-size: 1.3rem!important;
-    }
-
-
 }

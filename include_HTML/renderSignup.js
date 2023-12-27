@@ -43,8 +43,9 @@ function renderSignup() {
                         title="Kindly use upper- and lowercase letters.">
                 <div class="eye-container"><img class="input-img lock" src="assets/img/lock.png" alt="lock"></div>
             </div>
-            <div class="no-match d-none" id="pw-match-reminder">Ups?! Your passwords don't match.</div>
-            <div class="characters d-none" id="pw-check-reminder">You need at least 8 characters.</div>
+            <div class="reminder no-match d-none" id="pw-match-reminder">Ups?! Your passwords don't match.</div>
+            <div class="reminder characters d-none" id="pw-check-reminder">You need at least 8 characters.</div>
+            <div class="reminder strong-pw d-none" id="pw-strength-reminder">You need lower- and upper case letters.</div>
         </div>
         <div>
             <div id="policy-check" class="d-flex">

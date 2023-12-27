@@ -4,8 +4,6 @@ const wrongPass ="Wrong password";
 const passwordPattern = "Please use upper and lowercase letters and at least 8 characters";
 
 
-
-
 /**
  * Initializes the application by setting the event listener,
  * adding the log in handler, fetching the user list, and

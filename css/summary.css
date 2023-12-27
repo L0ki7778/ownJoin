@@ -300,10 +300,11 @@ a>span {
 
 @media screen and (max-width: 1370px) {
     :root {
-        font-size: 14px;
+        font-size: 13px;
     }
 
 }
+
 
 @media screen and (max-width: 1024px) {
     :root {
@@ -402,10 +403,6 @@ a>span {
 
 @media screen and (max-width: 545px) {
 
-    /* :root{
-        font-size: 12px;
-    }
-     */
     #grid-main-container {
         margin-top: 2rem;
     }
@@ -448,7 +445,13 @@ a>span {
         
     }
 
+    @media screen and (max-height: 600px) {
+        :root{
+            font-size: 10px!important
+        }
 
-
-
-
+        .grid-item{
+            height: 7rem;
+        }
+        
+    }
