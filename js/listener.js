@@ -222,6 +222,11 @@ function setClosingAssign() {
 
 
 
+/**
+ * Handles the click event for the assign button.
+ *
+ * @param {Event} event - The click event object.
+ */
 function handleClickAssign(event) {
     let assignContainer = document.getElementById("assign-select");
     let body = document.querySelector("body");
@@ -239,6 +244,13 @@ function handleClickAssign(event) {
     ) { closeList("assign-select", "assign", "assign-ul", "assign-icon") }
 }
 
+
+/**
+ * Removes the event listener for the body click event handler.
+ *
+ * @param {type} paramName - description of parameter
+ * @return {type} description of return value
+ */
 function removeBodyHandler() {
     let body = document.querySelector("body");
     body.removeEventListener("click", handleClickAssign);
@@ -264,32 +276,28 @@ function setEditableSubtask() {
 }
 
 
+/**
+ * Edits a list item by replacing it with an input field, allowing the user to edit the text.
+ *
+ * @param {string} id - The id of the list item to be edited.
+ * @return {undefined} This function does not return a value.
+ */
 function editListItem(id) {
-    // Erstelle ein textInput-Element
     let item = document.getElementById(`${id}`);
     const textInput = document.createElement("input");
     textInput.type = "text";
     textInput.value = item.textContent;
     textInput.classList.add("subtask-input");
     textInput.classList.add("edit-input");
-
-    // Ersetze das li-Element durch das textInput-Element
     item.parentNode.replaceChild(textInput, item);
-
-    // Füge ein Eventlistener für die "Enter"-Taste hinzu, um die Bearbeitung zu beenden
     textInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
-            // Beende die Bearbeitung und setze den neuen Text im li-Element
             item.textContent = textInput.value;
-            // Ersetze das textInput-Element durch das ursprüngliche li-Element
             textInput.parentNode.replaceChild(item, textInput);
         }
     });
-
-    // Setze den Fokus auf das Texteingabefeld
     textInput.focus();
 }
-
 
 
 /**

@@ -468,11 +468,11 @@ footer>a {
 }
 
 @-webkit-keyframes fade-border {
-    from {
+    0% {
         border: 3px solid rgba(0, 0, 0, 0.15);
     }
 
-    to {
+    100% {
         border: 3px solid var(--outline-active)
     }
 }
@@ -704,11 +704,11 @@ span>a {
 }
 
 @-webkit-keyframes up {
-    from {
+    0% {
         transform: translateY(120rem);
     }
 
-    to {
+    100% {
         transform: translateY(-8rem);
     }
 }

@@ -99,7 +99,7 @@ function generateTodoHTML(element) {
         </div>
         <div id="footer${element.id}" class="footer-box">
             <div data-value="${element.assignees}" class="profile-initials-container"></div>
-            <span id="hidden-elements-count${element.id}"></span>
+            <span class="footer-box-span" id="hidden-elements-count${element.id}"></span>
             <div class="prioriy-container" >${returnPriority(element.prio)}</div>
         </div>
     </div>

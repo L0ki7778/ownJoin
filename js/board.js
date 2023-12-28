@@ -61,7 +61,7 @@ function startDragging(id) {
     currentDraggedElement = id;
     let divs = document.querySelectorAll(".no-tasks");
     let areas = document.querySelectorAll(".drag-area");
-    
+
     divs.forEach(div => div.parentNode.removeChild(div));
 
     areas.forEach(area => {
@@ -265,7 +265,8 @@ function checkDragArea() {
     for (let i = 0; i < dragAreas.length; i++) {
         if (dragAreas[i].innerHTML.includes('Technical Task') || dragAreas[i].innerHTML.includes('User Story')) {
             if (dragAreas[i].firstElementChild) {
-                dragAreas[i].style = 'justify-content: flex-start; border:none; background-color: transparent; border-radius:3rem;';}
+                dragAreas[i].style = 'justify-content: flex-start; border:none; background-color: transparent; border-radius:3rem;';
+            }
         } else {
             dragAreas[i].style = '';
             if (!dragAreas[i].querySelector('.no-task')) {
@@ -304,7 +305,8 @@ function addSearchBarHandler() {
  * Focuses the input element with the id "find-task".
  * onclick-function for magnifying glass
  */
-function focusInput() {rentTodo
+function focusInput() {
+    rentTodo
     let input = document.getElementById("find-task");
     input.focus();
 }
@@ -335,28 +337,16 @@ function generateVarObj(obj) {
  */
 function hideExcessElements() {
     let containers = document.querySelectorAll('.profile-initials-container');
-    let existingContacts=[];
-    containers.forEach(function(container) {
-      let dataValue = container.getAttribute('data-value');
-      let elements = dataValue.split(',').map(function(item) {
-        return item.trim();
-      });
-      let countSpan = container.querySelector(`span[id^="hidden-elements-count"]`);
-  
-      if (!countSpan) {
-        countSpan = document.createElement('span');
-        countSpan.id = 'hidden-elements-count' + container.id.replace('footer', '');
-        container.parentNode.insertBefore(countSpan, container.nextSibling);
-      }
-      elements.forEach((e,i)=>{if(contacts[i] && contacts[i].id == e){if(!existingContacts.includes(e)){existingContacts.push(e)}}})
-      if (existingContacts.length > 5) {
-        for (let i = 5; i < elements.length; i++) {
-          container.children[i].style.display = 'none';
+    for (let i = 0; i < containers.length; i++) {
+        let container = containers[i];
+        let countSpan = document.getElementsByClassName('footer-box-span')[i]
+        let children = container.children;
+        let childCount = container.children.length - 5;
+        while (children.length > 5) {
+            container.removeChild(container.lastChild);
         }
-        let hiddenElementsCount = elements.length - 5;
-        countSpan.textContent = hiddenElementsCount > 0 ? '+' + hiddenElementsCount : '';
-      } else {
-        countSpan.textContent = '';
-      }
-    });
-  }
+        if (childCount > 0) {
+            countSpan.innerHTML = `+${childCount}`
+        }
+    }
+}
